@@ -38,6 +38,11 @@ sudo install lazygit /usr/local/bin
 apt install tmux
 # -tmux
 
+# -fzf
+sudo apt install fzf
+# -fzf
+
+    
 # -applications
 sudo apt install helix
 
@@ -57,6 +62,7 @@ sudo apt install vscode-lldb
 mkdir ~/.config/helix/config.toml
 
 ln -s $(pwd)/config/helix/config.toml ~/.config/helix/config.toml 
+ln -s $(pwd)/.bash_aliases  ~/.bash_aliases 
 }
 
 CYAN_B='\033[1;96m'
