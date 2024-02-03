@@ -63,6 +63,8 @@ mkdir ~/.config/helix/config.toml
 
 ln -s $(pwd)/config/helix/config.toml ~/.config/helix/config.toml 
 ln -s $(pwd)/.bash_aliases  ~/.bash_aliases 
+
+ln -s $(pwd)/.tmux.conf  ~/.tmux.conf 
 }
 
 CYAN_B='\033[1;96m'
