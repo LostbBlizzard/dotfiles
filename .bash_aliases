@@ -1,3 +1,3 @@
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 
-alias tmux_ide=$(pwd)/"tmux_ide.sh"
+alias tmux_ide="~/.dotfiles/tmux_ide.sh"
