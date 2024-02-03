@@ -4,7 +4,7 @@ WORKDIR=$(dirname "$0")
 cd "$WORKDIR"
 
 SESSION=$(basename "$INITDIR")
-
+export EDITOR=hx
 
 
 tmux \
@@ -13,7 +13,7 @@ tmux \
 	split-window -c "$INITDIR" -h -p 80 hx \; \
 	send-keys 'hx' Enter \; \
 	send-keys " " "f" \; \
-    split-window -c "$INITDIR" -h -p 15 sh \; \
-    split-window -c "$INITDIR" -v -p 40 lazygit \; \
+    split-window -c "$INITDIR" -h -p 20 bash \; \
+    split-window -c "$INITDIR" -v -p 60 lazygit \; \
      
  
