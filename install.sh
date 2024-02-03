@@ -50,6 +50,13 @@ sudo apt-get install clangd
 # vscode-lldb
 sudo apt install vscode-lldb
 # vscode-lldb
+
+
+# set sym-links
+
+mkdir ~/.config/helix/config.toml
+
+ln -s $(pwd)/config/helix/config.toml ~/.config/helix/config.toml 
 }
 
 CYAN_B='\033[1;96m'
