@@ -2,6 +2,7 @@
 
 InstallDevTools()
 {
+mydir = $(pwd) 
 
 sudo apt update
 
@@ -42,7 +43,16 @@ apt install tmux
 sudo apt install fzf
 # -fzf
 
-    
+
+# -nnn
+git clone https://github.com/LostbBlizzard/nnn ~/build/nnn 
+cd ~/build/nnn
+sudo apt-get install pkg-config libncursesw5-dev libreadline-dev
+sudo make strip install
+
+cd $mydir
+# -nnn
+
 # -applications
 sudo apt install helix
 
@@ -65,6 +75,11 @@ ln -s $(pwd)/config/helix/config.toml ~/.config/helix/config.toml
 ln -s $(pwd)/.bash_aliases  ~/.bash_aliases 
 
 ln -s $(pwd)/.tmux.conf  ~/.tmux.conf 
+
+# make shell sruc
+
+chmod +x $(pwd)/tmux_ide.sh
+
 }
 
 CYAN_B='\033[1;96m'
