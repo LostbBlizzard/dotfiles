@@ -15,5 +15,6 @@
 },
 "workbench.editor.empty.hint": "hidden",
 "workbench.iconTheme": "vscode-icons",
-"vsicons.dontShowNewVersionMessage": true
+"vsicons.dontShowNewVersionMessage": true,
+"vim.vimrc.enable": true
 }
