@@ -1,0 +1,19 @@
+{
+    "editor.mouseWheelZoom": true,
+    "git.autofetch": true,
+   "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+},
+"editor.formatOnPaste": true,
+"editor.formatOnSave": true,
+"editor.formatOnType": true,
+"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+"debug.onTaskErrors": "debugAnyway",
+"[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+},
+"workbench.editor.empty.hint": "hidden",
+"workbench.iconTheme": "vscode-icons",
+"vsicons.dontShowNewVersionMessage": true
+}
