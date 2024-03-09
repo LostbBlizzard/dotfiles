@@ -2,7 +2,7 @@
 
 InstallDevTools()
 {
-mydir = $(pwd) 
+$mydir = $(pwd) 
 
 sudo apt update
 
@@ -43,6 +43,9 @@ apt install tmux
 sudo apt install fzf
 # -fzf
 
+# -vifm
+sudo apt install vifm
+# -vifm
 
 # -nnn
 git clone https://github.com/LostbBlizzard/nnn ~/build/nnn 
@@ -66,20 +69,41 @@ sudo apt-get install clangd
 sudo apt install vscode-lldb
 # vscode-lldb
 
+}
 
+LinkOrRemove()
+{
+    if test -f $2; then
+      rm $2
+    fi
+
+    ln -s $1 $2
+}
+
+InstallDevSettings()
+{
 # set sym-links
+mkdir ~/.config
+mkdir ~/.config/helix
+mkdir ~/.config/vifm
+mkdir ~/.config/Code
+mkdir ~/.config/Code/User
 
-mkdir ~/.config/helix/config.toml
+LinkOrRemove $(pwd)/config/helix/config.toml ~/.config/helix/config.toml 
+LinkOrRemove $(pwd)/.bash_aliases  ~/.bash_aliases 
 
-ln -s $(pwd)/config/helix/config.toml ~/.config/helix/config.toml 
-ln -s $(pwd)/.bash_aliases  ~/.bash_aliases 
+LinkOrRemove $(pwd)/.tmux.conf  ~/.tmux.conf 
 
-ln -s $(pwd)/.tmux.conf  ~/.tmux.conf 
+LinkOrRemove $(pwd)/config/vifm/vifmrc ~/.config/vifm/vifmrc
 
+LinkOrRemove $(pwd)/config/.vimrc ~/.vimrc
+
+LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
+LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
 # make shell sruc
 
 chmod +x $(pwd)/tmux_ide.sh
-
+pause
 }
 
 CYAN_B='\033[1;96m'
@@ -97,12 +121,15 @@ echo "Setup Dotfiles"
 echo "Install packages"
 echo "Configure system/n"
 
-echo "Do you wish to Setup this System?(y/n)"
+echo "Do you wish to Setup this System?(y/n/tool/config)"
 
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then 
-    InstallDevTools
+ InstallDevSettings   
+ InstallDevTools
+elif [ "$answer" != "${answer#[config]}" ] ;then 
+ InstallDevSettings   
 else
     exit
 fi
