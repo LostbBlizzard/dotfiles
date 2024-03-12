@@ -5,6 +5,9 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true
 },
+"[go]": {
+    "editor.formatOnSaveMode": "file"
+  },
 "editor.formatOnPaste": true,
 "editor.formatOnSave": true,
 "editor.formatOnType": true,
@@ -16,5 +19,7 @@
 "workbench.editor.empty.hint": "hidden",
 "workbench.iconTheme": "vscode-icons",
 "vsicons.dontShowNewVersionMessage": true,
-"vim.vimrc.enable": true
+"vim.vimrc.enable": true,
+"editor.lineNumbers": "relative",
+"go.inlayHints.compositeLiteralTypes": true
 }
