@@ -12,6 +12,7 @@ function RemoveFileIfExst($filePath) {
 
 # Vim Settings
 RemoveFileIfExst $env:USERPROFILE\.vimrc
+cmd /c mklink $env:USERPROFILE\.vimrc $dir\.vimrc
 cmd /c mklink /D $env:USERPROFILE\AppData\Local\nvim $dir\config\nvim
 
 # VS Code Settings
