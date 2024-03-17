@@ -46,12 +46,7 @@ use({
     },
 })
 
-use({
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional
-  },
-})
+use({"vifm/vifm.vim"})
 
 
 end)
