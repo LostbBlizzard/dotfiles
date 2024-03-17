@@ -98,6 +98,8 @@ LinkOrRemove $(pwd)/config/vifm/vifmrc ~/.config/vifm/vifmrc
 
 LinkOrRemove $(pwd)/config/.vimrc ~/.vimrc
 
+LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
+
 LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
 LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
 # make shell sruc
