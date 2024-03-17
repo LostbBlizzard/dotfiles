@@ -4,7 +4,7 @@ WORKDIR=$(dirname "$0")
 cd "$WORKDIR"
 
 SESSION=$(basename "$INITDIR")
-export EDITOR=hx
+export EDITOR=nvim
 
 
 tmux \
