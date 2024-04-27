@@ -15,15 +15,15 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # -rust/cargo
 
 # -ziglang
-sudo apt install zig
+# add linux install
 # -ziglang
 
 # -C/C++
-sudo apt-get install g++
+sudo apt-get install g++ -y
 # -C/C++
 
 # -go
-sudo apt install golang-go
+sudo apt install golang-go -y
 # -go
 
 # -terminal tools
@@ -33,41 +33,40 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
+
+rm lazygit
+rm lazygit.tar.gz
 #  -lazygit
 
 # -tmux
-apt install tmux
+apt install tmux -y
 # -tmux
 
 # -fzf
-sudo apt install fzf
+sudo apt install fzf -y
 # -fzf
 
 # -vifm
-sudo apt install vifm
+sudo apt install vifm -y
 # -vifm
 
-# -nnn
-git clone https://github.com/LostbBlizzard/nnn ~/build/nnn 
-cd ~/build/nnn
-sudo apt-get install pkg-config libncursesw5-dev libreadline-dev
-sudo make strip install
-
-cd $mydir
-# -nnn
-
 # -applications
-sudo apt install helix
+
+# neovim
+sudo apt-get install ninja-build gettext cmake unzip curl
+git clone https://github.com/neovim/neovim.git
+cd neovim
+git checkout v0.9.1
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+
+# neovim
 
 # utills
 
 # - clangd
-sudo apt-get install clangd
+sudo apt-get install clangd -y
 # - clangd
-
-# vscode-lldb
-sudo apt install vscode-lldb
-# vscode-lldb
 
 }
 
