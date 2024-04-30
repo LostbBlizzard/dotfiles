@@ -53,7 +53,7 @@ sudo apt install vifm -y
 # -applications
 
 # neovim
-sudo apt-get install ninja-build gettext cmake unzip curl
+sudo apt-get install ninja-build gettext cmake unzip curl -y
 git clone https://github.com/neovim/neovim.git
 cd neovim
 git checkout v0.9.1
@@ -68,6 +68,9 @@ sudo make install
 sudo apt-get install clangd -y
 # - clangd
 
+# - gdb
+sudo apt install gdb -y
+# - gdb
 }
 
 LinkOrRemove()
