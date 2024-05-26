@@ -1,58 +1,88 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-    {
-        "key": "ctrl+shift+s",
-        "command": "saveAll"
-    },
-    {
-        "key": "ctrl+k s",
-        "command": "-saveAll"
-    },
-    {
-        "key": "ctrl+shift+s",
-        "command": "-workbench.action.files.saveAs"
-    },
-    {
-        "key": "ctrl+shift+b",
-        "command": "workbench.action.tasks.build",
-        "when": "taskCommandsRegistered"
-    },
-    {
-        "key": "ctrl+shift+b",
-        "command": "-workbench.action.tasks.build",
-        "when": "taskCommandsRegistered"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "workbench.action.terminal.scrollUpPage",
-        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
-    },
-    {
-        "key": "shift+pageup",
-        "command": "-workbench.action.terminal.scrollUpPage",
-        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
-    },
-    {
-        "key": "ctrl+f",
-        "command": "workbench.action.terminal.scrollDownPage",
-        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
-    },
-    {
-        "key": "shift+pagedown",
-        "command": "-workbench.action.terminal.scrollDownPage",
-        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
-    },
-    {
+  {
+    "key": "a",
+    "command": "workbench.action.closeOtherEditors",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.tasks.build",
+    "when": "taskCommandsRegistered"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "-workbench.action.tasks.build",
+    "when": "taskCommandsRegistered"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.terminal.scrollUpPage",
+    "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+  },
+  {
+    "key": "shift+pageup",
+    "command": "-workbench.action.terminal.scrollUpPage",
+    "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "workbench.action.terminal.scrollDownPage",
+    "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+  },
+  {
+    "key": "shift+pagedown",
+    "command": "-workbench.action.terminal.scrollDownPage",
+    "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+  },
+  {
     "key": "escape",
-    "command":"workbench.action.focusActiveEditorGroup",
-    "when":"!editorTextFocus"
-    },
-    {
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorTextFocus"
+  },
+  {
     "key": "ctrl+p",
-    "command": "workbench.action.quickOpen"
-    }
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "/",
+    "command": "filesExplorer.findInFolder",
+    "when": "filesExplorerFocus"
+  }
 ]

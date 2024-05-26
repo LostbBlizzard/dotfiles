@@ -24,4 +24,5 @@
 "vim.vimrc.enable": true,
 "editor.lineNumbers": "relative",
 "go.inlayHints.compositeLiteralTypes": true,
+"vim.digraphs": {},
 }
