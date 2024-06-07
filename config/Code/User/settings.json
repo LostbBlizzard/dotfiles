@@ -1,28 +1,29 @@
 {
-    "editor.mouseWheelZoom": true,
-    "git.autofetch": true,
-   "[rust]": {
+  "editor.mouseWheelZoom": true,
+  "git.autofetch": true,
+  "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true
-},
-"[go]": {
+  },
+  "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.formatOnSaveMode": "file",
-    "editor.insertSpaces": true,
+    "editor.insertSpaces": true
   },
-"editor.formatOnPaste": true,
-"editor.formatOnSave": true,
-"editor.formatOnType": true,
-"editor.defaultFormatter": "esbenp.prettier-vscode",
-"debug.onTaskErrors": "debugAnyway",
-"[cpp]": {
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "debug.onTaskErrors": "debugAnyway",
+  "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
-},
-"workbench.editor.empty.hint": "hidden",
-"workbench.iconTheme": "vscode-icons",
-"vsicons.dontShowNewVersionMessage": true,
-"vim.vimrc.enable": true,
-"editor.lineNumbers": "relative",
-"go.inlayHints.compositeLiteralTypes": true,
-"vim.digraphs": {},
+  },
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.iconTheme": "vscode-icons",
+  "vsicons.dontShowNewVersionMessage": true,
+  "vim.vimrc.enable": true,
+  "editor.lineNumbers": "relative",
+  "go.inlayHints.compositeLiteralTypes": true,
+  "vim.digraphs": {},
+  "sqltools.connections": []
 }
