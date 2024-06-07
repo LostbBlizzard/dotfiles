@@ -3,7 +3,7 @@
   {
     "key": "a",
     "command": "workbench.action.closeOtherEditors",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "ctrl+shift+b",
@@ -53,36 +53,46 @@
   {
     "key": "y",
     "command": "filesExplorer.copy",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "p",
     "command": "filesExplorer.paste",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "n",
     "command": "explorer.newFile",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "ctrl+n",
     "command": "explorer.newFolder",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "r",
     "command": "renameFile",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "d",
     "command": "deleteFile",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "c",
+    "command": "filesExplorer.cut",
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "/",
     "command": "filesExplorer.findInFolder",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "f5",
+    "command": "sqltools.executeQuery",
+    "when": "editorTextFocus && resourceExtname == .sql"
   }
 ]

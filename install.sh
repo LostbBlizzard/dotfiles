@@ -53,17 +53,14 @@ sudo apt install vifm -y
 # -applications
 
 # neovim
-sudo apt-get install ninja-build gettext cmake unzip curl -y
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout v0.9.1
-make CMAKE_BUILD_TYPE=Release
-sudo make install
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
 
-# install packer for neovim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-# neovim
+echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+
+# setup kickstart 
+git clone https://github.com/LostbBlizzard/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 # utills
 
