@@ -58,6 +58,7 @@ sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 
 echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+rm nvim-linux64.tar.gz
 # utills
 
 # - clangd
@@ -82,12 +83,10 @@ InstallDevSettings()
 {
 # set sym-links
 mkdir ~/.config
-mkdir ~/.config/helix
 mkdir ~/.config/vifm
 mkdir ~/.config/Code
 mkdir ~/.config/Code/User
 
-LinkOrRemove $(pwd)/config/helix/config.toml ~/.config/helix/config.toml 
 LinkOrRemove $(pwd)/.bash_aliases  ~/.bash_aliases 
 
 LinkOrRemove $(pwd)/.tmux.conf  ~/.tmux.conf 
@@ -100,10 +99,8 @@ LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
 
 LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
 LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
-# make shell sruc
 
-chmod +x $(pwd)/tmux_ide.sh
-pause
+source ~/.bashrc
 }
 
 CYAN_B='\033[1;96m'
