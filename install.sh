@@ -75,6 +75,12 @@ sudo apt-get install clangd -y
 # - gdb
 sudo apt install gdb -y
 # - gdb
+
+
+source ~/.bashrc
+
+# go-delve
+go install github.com/go-delve/delve/cmd/dlv@latest
 }
 
 LinkOrRemove()
