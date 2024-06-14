@@ -164,6 +164,14 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Netrw key maps
+vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> l <CR>'
+vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> h -'
+
+vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> n %'
+--vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> <c-d> :'
+vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> r R'
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -193,24 +201,6 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
-vim.api.nvim_exec(
-  [[
-  augroup netrw_custom_mappings
-    autocmd!
-    autocmd FileType netrw call s:netrw_setup_mappings()
-  augroup END
-
-  function! s:netrw_setup_mappings()
-    " Map 'n' to create a new file
-    nnoremap <buffer> n :call netrw#NetrwNewFile(0)<CR>
-
-    " Map <C-b> to create a new directory
-    nnoremap <buffer> <C-b> :call netrw#NetrwMkdir(0)<CR>
-  endfunction
-]],
-  false
-)
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
