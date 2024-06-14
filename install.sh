@@ -50,6 +50,11 @@ sudo apt install fzf -y
 sudo apt install vifm -y
 # -vifm
 
+# pbcopy
+sudo apt install xsel -y
+# pbcopy
+
+
 # -applications
 
 # neovim
