@@ -79,8 +79,6 @@ sudo apt install gdb -y
 
 source ~/.bashrc
 
-# go-delve
-go install github.com/go-delve/delve/cmd/dlv@latest
 }
 
 LinkOrRemove()
