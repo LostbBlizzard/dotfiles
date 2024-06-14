@@ -170,6 +170,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Jump to Netrw' })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -193,6 +194,23 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.api.nvim_exec(
+  [[
+  augroup netrw_custom_mappings
+    autocmd!
+    autocmd FileType netrw call s:netrw_setup_mappings()
+  augroup END
+
+  function! s:netrw_setup_mappings()
+    " Map 'n' to create a new file
+    nnoremap <buffer> n :call netrw#NetrwNewFile(0)<CR>
+
+    " Map <C-b> to create a new directory
+    nnoremap <buffer> <C-b> :call netrw#NetrwMkdir(0)<CR>
+  endfunction
+]],
+  false
+)
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
