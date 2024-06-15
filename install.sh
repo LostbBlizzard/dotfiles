@@ -68,6 +68,14 @@ echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
 rm nvim-linux64.tar.gz
 # utills
 
+# - tmux plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# - tmux plugins
+
+# - powerline
+sudo apt install powerline -y
+# - powerline
+
 # - clangd
 sudo apt-get install clangd -y
 # - clangd
@@ -79,6 +87,21 @@ sudo apt install gdb -y
 
 source ~/.bashrc
 
+
+echo 'export PATH="$PATH:$HOME/go/bin"' >> ~/.bashrc
+
+
+
+echo 'export PATH="$PATH:$HOME/go/bin"' >> ~/.bashrc
+
+# from https://www.ricalo.com/blog/install-powerline-ubuntu/#install-powerline
+echo '# Powerline configuration' >> ~/.bashrc
+echo 'if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then' >> ~/.bashrc
+echo 'powerline-daemon -q' >> ~/.bashrc
+echo 'POWERLINE_BASH_CONTINUATION=1' >> ~/.bashrc
+echo 'POWERLINE_BASH_SELECT=1' >> ~/.bashrc
+echo 'source /usr/share/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
+echo 'fi' >> ~/.bashrc
 }
 
 LinkOrRemove()
