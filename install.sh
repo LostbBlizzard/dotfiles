@@ -11,7 +11,7 @@ sudo apt update
 # -command line tools
 
 # -rust/cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # -rust/cargo
 
 # -ziglang
@@ -84,9 +84,12 @@ sudo apt-get install clangd -y
 sudo apt install gdb -y
 # - gdb
 
+# - pass
+sudo apt-get install pass
+# - pass
 
-source ~/.bashrc
 
+echo 'export EDITOR=nvim' >> ~/.bashrc
 
 echo 'export PATH="$PATH:$HOME/go/bin"' >> ~/.bashrc
 
@@ -102,6 +105,8 @@ echo 'POWERLINE_BASH_CONTINUATION=1' >> ~/.bashrc
 echo 'POWERLINE_BASH_SELECT=1' >> ~/.bashrc
 echo 'source /usr/share/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
+
+source ~/.bashrc
 }
 
 LinkOrRemove()
