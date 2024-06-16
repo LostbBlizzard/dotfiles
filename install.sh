@@ -25,6 +25,7 @@ sudo apt-get install g++ -y
 # -go
 wget https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
+rm go1.22.4.linux-amd64.tar.gz
 echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.bashrc
 # -go
 
@@ -85,7 +86,7 @@ sudo apt install gdb -y
 # - gdb
 
 # - pass
-sudo apt-get install pass
+sudo apt-get install pass -y
 # - pass
 
 
@@ -106,7 +107,7 @@ echo 'POWERLINE_BASH_SELECT=1' >> ~/.bashrc
 echo 'source /usr/share/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
 
-source ~/.bashrc
+~/.bashrc
 }
 
 LinkOrRemove()
@@ -138,6 +139,10 @@ LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
 
 LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
 LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
+
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+~/.bashrc
 
 source ~/.bashrc
 }
