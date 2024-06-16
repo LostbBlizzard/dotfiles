@@ -2,7 +2,7 @@
 
 InstallDevTools()
 {
-$mydir = $(pwd) 
+mydir=$(pwd) 
 
 sudo apt update
 
@@ -133,7 +133,7 @@ LinkOrRemove $(pwd)/.tmux.conf  ~/.tmux.conf
 
 LinkOrRemove $(pwd)/config/vifm/vifmrc ~/.config/vifm/vifmrc
 
-LinkOrRemove $(pwd)/config/.vimrc ~/.vimrc
+LinkOrRemove $(pwd)/.vimrc ~/.vimrc
 
 LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
 
@@ -142,9 +142,8 @@ LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
 
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
-~/.bashrc
+. ~/.bashrc
 
-source ~/.bashrc
 }
 
 CYAN_B='\033[1;96m'
@@ -167,8 +166,8 @@ echo "Do you wish to Setup this System?(y/n/tool/config)"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then 
- InstallDevSettings   
  InstallDevTools
+ InstallDevSettings   
 elif [ "$answer" != "${answer#[config]}" ] ;then 
  InstallDevSettings   
 else
