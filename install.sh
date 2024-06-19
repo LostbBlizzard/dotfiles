@@ -94,9 +94,7 @@ echo 'export EDITOR=nvim' >> ~/.bashrc
 
 echo 'export PATH="$PATH:$HOME/go/bin"' >> ~/.bashrc
 
-
-
-echo 'export PATH="$PATH:$HOME/go/bin"' >> ~/.bashrc
+echo 'export GIT_ASKPASS="$HOME/dotfiles/git_env_password.sh"' >> ~/.bashrc
 
 # from https://www.ricalo.com/blog/install-powerline-ubuntu/#install-powerline
 echo '# Powerline configuration' >> ~/.bashrc
@@ -142,6 +140,7 @@ LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
 
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
+chmod +X $(pwd)/git_env_password.sh
 . ~/.bashrc
 
 }
