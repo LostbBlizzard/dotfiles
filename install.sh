@@ -89,6 +89,9 @@ sudo apt install gdb -y
 sudo apt-get install pass -y
 # - pass
 
+# lazydocker
+go install github.com/jesseduffield/lazydocker@latest
+# lazydocker
 
 echo 'export EDITOR=nvim' >> ~/.bashrc
 
