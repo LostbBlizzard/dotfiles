@@ -143,6 +143,7 @@ LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
 chmod +X $(pwd)/git_env_password.sh
 . ~/.bashrc
 
+echo "Remember to run: git config credential.https://github.com.username [GIT_USER]"
 }
 
 CYAN_B='\033[1;96m'
