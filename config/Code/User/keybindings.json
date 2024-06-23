@@ -94,5 +94,21 @@
     "key": "f5",
     "command": "sqltools.executeQuery",
     "when": "editorTextFocus && resourceExtname == .sql"
+  },
+  {
+    "key": "ctrl+=",
+    "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "editor.action.fontZoomOut"
+  },
+  {
+    "key": "ctrl+=",
+    "command": "editor.action.fontZoomIn"
   }
 ]
