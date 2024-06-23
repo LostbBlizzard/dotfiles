@@ -8,7 +8,15 @@ function RemoveFileIfExst($filePath) {
     }
 
 }
+# apps
+# GlazeWM
+winget install GlazeWM
+# GlazeWM
 
+# lazydocker
+go install github.com/jesseduffield/lazydocker@latest
+# lazydocker
+ app
 
 # Vim Settings
 RemoveFileIfExst $env:USERPROFILE\.vimrc
