@@ -110,5 +110,18 @@
   {
     "key": "ctrl+=",
     "command": "editor.action.fontZoomIn"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "lazygit.openLazygit"
+  },
+  {
+    "key": "ctrl+g g",
+    "command": "-lazygit.openLazygit"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
   }
 ]

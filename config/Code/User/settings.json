@@ -25,5 +25,6 @@
   "editor.lineNumbers": "relative",
   "go.inlayHints.compositeLiteralTypes": true,
   "vim.digraphs": {},
-  "sqltools.connections": []
+  "sqltools.connections": [],
+  "terminal.integrated.defaultProfile.windows": "Command Prompt"
 }
