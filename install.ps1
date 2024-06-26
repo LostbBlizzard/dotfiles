@@ -30,4 +30,5 @@ RemoveFileIfExst $env:APPDATA\Code\User\keybindings.json
 cmd /c mklink $env:APPDATA\Code\User\settings.json $dir\config\Code\User\settings.json 
 cmd /c mklink $env:APPDATA\Code\User\keybindings.json $dir\config\Code\User\keybindings.json 
 
+cmd /c mklink /D $env:USERPROFILE\.glaze-wm\config.yaml $dir\windows\.glaze-wm\config.yaml
 pause
