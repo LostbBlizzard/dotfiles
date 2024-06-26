@@ -26,5 +26,33 @@
   "go.inlayHints.compositeLiteralTypes": true,
   "vim.digraphs": {},
   "sqltools.connections": [],
-  "terminal.integrated.defaultProfile.windows": "Command Prompt"
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "g"],
+      "commands": ["lazygit.openLazygit"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["lazydocker"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "\""],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<leader>", "%"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    }
+  ],
+  "workbench.activityBar.location": "top"
 }
