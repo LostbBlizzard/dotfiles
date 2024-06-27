@@ -21,6 +21,8 @@ map c :cut<CR>
 map d :delete<CR>
 map <Esc> :qall!<CR>
 
+map gc :!start code . <CR>
+map gg :!start godot -e <CR>
 set vicmd=nvim
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
