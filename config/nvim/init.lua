@@ -168,9 +168,10 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> l <CR>'
 vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> h -'
 
-vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> n %'
---vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> <c-d> :'
+vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> t %'
+vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> m d'
 vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> r R'
+--vim.api.nvim_command 'autocmd FileType netrw nmap <buffer> d D'
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -586,6 +587,7 @@ require('lazy').setup({
           },
         },
         sqls = {},
+        templ = {},
         -- pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -769,7 +771,7 @@ require('lazy').setup({
           --
           -- <c-l> will move you to the right of each of the expansion locations.
           -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
+          ['<C-x>'] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
             end
