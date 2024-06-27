@@ -21,6 +21,7 @@ go install github.com/jesseduffield/lazydocker@latest
 # Vim Settings
 RemoveFileIfExst $env:USERPROFILE\.vimrc
 cmd /c mklink $env:USERPROFILE\.vimrc $dir\.vimrc
+cmd /c mklink $env:USERPROFILE\.vifm\vifmrc $dir\config\vifm\vifmrc
 cmd /c mklink /D $env:USERPROFILE\AppData\Local\nvim $dir\config\nvim
 
 # VS Code Settings
