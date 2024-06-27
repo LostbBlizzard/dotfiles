@@ -13,8 +13,8 @@
 
 only
 
-map n :touch<Space>
-map <C-n> :mkdir<Space>
+map t :touch<Space>
+map m :mkdir<Space>
 map r :rename<Space>
 map y :copy<CR>
 map c :cut<CR>
@@ -121,8 +121,13 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 " :mark mark /full/directory/path [filename]
 
-mark b ~/bin/
-mark h ~/
+mark a ~/
+mark b ~/../../
+mark c ~/../../CoolStuff
+mark d ~/../../CoolStuff/CoolCodeingStuff/other/dotfiles
+mark e ~/../../CoolStuff/CoolCodeingStuff
+mark g ~/../../CoolStuff/CoolGameStuff
+mark l ~/Downloads
 
 " ------------------------------------------------------------------------------
 
