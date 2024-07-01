@@ -161,6 +161,18 @@ vim.opt.scrolloff = 10
 --  See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
+
+local allowautoformat = true
+vim.api.nvim_create_user_command('AutoFormat', function()
+  allowautoformat = not allowautoformat
+
+  if allowautoformat then
+    print 'AutoFormat is On'
+  else
+    print 'AutoFormat is Off'
+  end
+end, {})
+
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -670,10 +682,15 @@ require('lazy').setup({
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
+
+        if allowautoformat then
+          return {
+            timeout_ms = 500,
+            lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+          }
+        else
+          return {}
+        end
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
