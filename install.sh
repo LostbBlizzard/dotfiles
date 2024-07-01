@@ -57,6 +57,9 @@ sudo apt install vifm -y
 sudo apt install xsel -y
 # pbcopy
 
+# -ripgrep
+sudo apt-get install ripgrep
+# -ripgrep
 
 # -applications
 
