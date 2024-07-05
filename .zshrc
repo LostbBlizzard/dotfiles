@@ -21,9 +21,9 @@ emulate zsh
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-zinit light zsh-users/zsh-syntax-highlighting
+# zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-autosuggestions
 zinit light jeffreytse/zsh-vi-mode
 # Load 
 autoload -U compinit && compinit
