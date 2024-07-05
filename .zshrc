@@ -15,7 +15,9 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-# source ~/.bashrc 
+emulate sh
+source ~/.bashrc 
+emulate zsh
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 

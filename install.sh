@@ -144,7 +144,6 @@ LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
 LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
 LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
 
-LinkOrRemove $(pwd)/.profile ~/.profile
 LinkOrRemove $(pwd)/.zshrc ~/.zshrc
 
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
