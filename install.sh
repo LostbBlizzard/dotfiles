@@ -96,6 +96,10 @@ sudo apt-get install pass -y
 go install github.com/jesseduffield/lazydocker@latest
 # lazydocker
 
+# - zsh
+sudo apt install zsh -y
+# - zsh
+
 echo 'export EDITOR=nvim' >> ~/.bashrc
 
 echo 'export PATH="$PATH:$HOME/go/bin"' >> ~/.bashrc
