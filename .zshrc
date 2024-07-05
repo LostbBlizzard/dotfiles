@@ -15,7 +15,7 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-emulate sh
+emulate bash
 source ~/.bashrc 
 emulate zsh
 
