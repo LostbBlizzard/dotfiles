@@ -48,6 +48,9 @@ return {
 
     -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<S-L>', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<S-P>', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
+    vim.keymap.set('n', '<S-M>', dap.pause, { desc = 'Debug: Pause' })
+
     vim.keymap.set('n', '<S-O>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<S-I>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<S-H>', dap.step_out, { desc = 'Debug: Step Out' })
@@ -56,6 +59,7 @@ return {
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
 
+    dap.defaults.cpp.exception_breakpoints = { 'raised' }
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
     dapui.setup {
