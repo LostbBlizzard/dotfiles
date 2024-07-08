@@ -6,6 +6,17 @@
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
+ShouldAttach = false
+vim.api.nvim_create_user_command('ShouldAttach', function()
+  ShouldAttach = not ShouldAttach
+
+  if ShouldAttach then
+    print 'ShouldAttach is On'
+  else
+    print 'ShouldAttach is Off'
+  end
+end, {})
+
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -21,6 +32,7 @@ return {
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
+    'theHamsta/nvim-dap-virtual-text',
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
@@ -28,6 +40,11 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    require("nvim-dap-virtual-text").setup(
+      {
+        virt_text_pos = 'inline'
+      }
+    )
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -46,8 +63,37 @@ return {
       },
     }
 
+    vim.keymap.set('n', '<S-Z>', function()
+      require('dapui').eval(nil, { enter = true });
+    end)
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<S-L>', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<S-L>', function()
+      if ShouldAttach then
+        vim.ui.input({ prompt = 'Attach To Process ID: ' },
+          function(input)
+            if input == "" then
+              print("Not Starting Because there was no Process ID")
+              return
+            end
+
+            isword = true
+
+            if isword then
+              local output = vim.fn.system('ps ax | grep ' .. input)
+              vim.ui.input({ prompt = output .. ' Process: ' },
+                function(input)
+                -- add attach
+                end)
+            else
+              -- add attach
+            end
+          end);
+      else
+        dap.continue();
+      end
+    end
+    , { desc = 'Debug: Start/Continue' })
+
     vim.keymap.set('n', '<S-P>', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
     vim.keymap.set('n', '<S-M>', dap.pause, { desc = 'Debug: Pause' })
 
