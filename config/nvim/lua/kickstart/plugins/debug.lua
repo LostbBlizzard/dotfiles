@@ -63,11 +63,13 @@ return {
       },
     }
 
-    vim.keymap.set('n', '<S-Z>', function()
+    vim.keymap.set('n', '<leader>dk', function()
       require('dapui').eval(nil, { enter = true });
     end)
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<S-L>', function()
+    vim.keymap.set('n', '<leader>dl', dap.continue, { desc = 'Debug: Start/Continue' })
+    --[[
+    vim.keymap.set('n', '<leader>dl', function()
       if ShouldAttach then
         vim.ui.input({ prompt = 'Attach To Process ID: ' },
           function(input)
@@ -82,10 +84,25 @@ return {
               local output = vim.fn.system('ps ax | grep ' .. input)
               vim.ui.input({ prompt = output .. ' Process: ' },
                 function(input)
-                -- add attach
+                  dap.adapters.cppdbg = {
+                    type = 'executable',
+                    command = 'codelldb', -- Adjust as needed
+                    name = "cppdbg"
+                  }
+
+                  local config = {
+                    name = "Attach to PID",
+                    type = "cppdbg",
+                    request = "attach",
+                    pid = input,
+                    cwd = "${workspaceFolder}",
+                    stopAtEntry = true,
+                  }
+
+                  dap.run(config, {})
                 end)
             else
-              -- add attach
+              dap.attach('cpp', { pid = input })
             end
           end);
       else
@@ -93,15 +110,16 @@ return {
       end
     end
     , { desc = 'Debug: Start/Continue' })
+    --]]
 
-    vim.keymap.set('n', '<S-P>', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
-    vim.keymap.set('n', '<S-M>', dap.pause, { desc = 'Debug: Pause' })
+    vim.keymap.set('n', '<leader>dx', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
+    vim.keymap.set('n', '<leader>dp', dap.pause, { desc = 'Debug: Pause' })
 
-    vim.keymap.set('n', '<S-O>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<S-I>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<S-H>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<S-J>', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<S-U>', function()
+    vim.keymap.set('n', '<leader>do', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<leader>di', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>dh', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>dj', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    vim.keymap.set('n', '<leader>du', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
 
