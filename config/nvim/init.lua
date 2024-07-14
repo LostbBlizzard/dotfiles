@@ -5,7 +5,7 @@ vim.api.nvim_set_keymap('n', 'H', 'gT', { noremap = true })
 vim.api.nvim_set_keymap('n', 'L', 'gt', { noremap = true })
 
 vim.api.nvim_set_keymap('n', "<C-d>", "<C-d>zz", { noremap = true })
-vim.api.nvim_set_keymap('n', "<C-b>", "<C-b>zz", { noremap = true })
+vim.api.nvim_set_keymap('n', "<C-u>", "<C-u>zz", { noremap = true })
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
