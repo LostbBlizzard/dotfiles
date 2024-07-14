@@ -89,6 +89,11 @@ function OpenVimTrello()
 	end
 end
 
+vim.api.nvim_create_user_command('CleanTrelloTokens', function()
+	vim.g.vimTrelloToken = nil
+	vim.g.vimTrelloApiKey = nil
+end, {})
+
 return {
 	"yoshio15/vim-trello",
 
