@@ -86,10 +86,6 @@ vim.api.nvim_create_user_command('AutoFormat', function()
   end
 end, {})
 
-vim.api.nvim_create_user_command('CO', function()
-  vim.cmd("bufdo bd")
-  vim.cmd("e#")
-end, {})
 
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
