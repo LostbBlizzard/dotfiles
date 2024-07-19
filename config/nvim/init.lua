@@ -539,6 +539,26 @@ require('lazy').setup(
             },
           },
           sqls = {},
+          html = {
+            settings = {
+              filetypes = { "html", "templ" }
+            }
+          },
+          htmx = {
+            settings = {
+              filetypes = { "html", "templ" }
+            }
+          },
+          tailwindcss = {
+            settings = {
+              filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+              tailwindCSS = {
+                includeLanguages = {
+                  templ = "html",
+                },
+              },
+            },
+          },
           templ = {},
           -- pyright = {},
           rust_analyzer = {},
@@ -548,7 +568,7 @@ require('lazy').setup(
           --    https://github.com/pmizio/typescript-tools.nvim
           --
           -- But for many setups, the LSP (`tsserver`) will work just fine
-          -- tsserver = {},
+          tsserver = {},
           --
 
           lua_ls = {
