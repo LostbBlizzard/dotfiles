@@ -61,12 +61,12 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "n",
+    "key": "t",
     "command": "explorer.newFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "ctrl+n",
+    "key": "m",
     "command": "explorer.newFolder",
     "when": "filesExplorerFocus && !inputFocus"
   },
