@@ -6,6 +6,17 @@
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
+ShouldAttach = false
+vim.api.nvim_create_user_command('ShouldAttach', function()
+  ShouldAttach = not ShouldAttach
+
+  if ShouldAttach then
+    print 'ShouldAttach is On'
+  else
+    print 'ShouldAttach is Off'
+  end
+end, {})
+
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -21,6 +32,7 @@ return {
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
+    'theHamsta/nvim-dap-virtual-text',
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
@@ -28,6 +40,11 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    require("nvim-dap-virtual-text").setup(
+      {
+        virt_text_pos = 'inline'
+      }
+    )
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -42,19 +59,71 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'codelldb',
       },
     }
 
+    vim.keymap.set('n', '<leader>dk', function()
+      require('dapui').eval(nil, { enter = true });
+    end)
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<C-F10>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<F9>', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
+    vim.keymap.set('n', '<leader>dl', dap.continue, { desc = 'Debug: Start/Continue' })
+    --[[
+    vim.keymap.set('n', '<leader>dl', function()
+      if ShouldAttach then
+        vim.ui.input({ prompt = 'Attach To Process ID: ' },
+          function(input)
+            if input == "" then
+              print("Not Starting Because there was no Process ID")
+              return
+            end
+
+            isword = true
+
+            if isword then
+              local output = vim.fn.system('ps ax | grep ' .. input)
+              vim.ui.input({ prompt = output .. ' Process: ' },
+                function(input)
+                  dap.adapters.cppdbg = {
+                    type = 'executable',
+                    command = 'codelldb', -- Adjust as needed
+                    name = "cppdbg"
+                  }
+
+                  local config = {
+                    name = "Attach to PID",
+                    type = "cppdbg",
+                    request = "attach",
+                    pid = input,
+                    cwd = "${workspaceFolder}",
+                    stopAtEntry = true,
+                  }
+
+                  dap.run(config, {})
+                end)
+            else
+              dap.attach('cpp', { pid = input })
+            end
+          end);
+      else
+        dap.continue();
+      end
+    end
+    , { desc = 'Debug: Start/Continue' })
+    --]]
+
+    vim.keymap.set('n', '<leader>dx', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
+    vim.keymap.set('n', '<leader>dp', dap.pause, { desc = 'Debug: Pause' })
+
+    vim.keymap.set('n', '<leader>do', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<leader>di', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>dh', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>dj', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    vim.keymap.set('n', '<leader>du', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
 
+    dap.defaults.cpp.exception_breakpoints = { 'raised' }
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
     dapui.setup {

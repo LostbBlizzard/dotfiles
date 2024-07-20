@@ -57,6 +57,9 @@ sudo apt install vifm -y
 sudo apt install xsel -y
 # pbcopy
 
+# -ripgrep
+sudo apt-get install ripgrep
+# -ripgrep
 
 # -applications
 
@@ -92,6 +95,10 @@ sudo apt-get install pass -y
 # lazydocker
 go install github.com/jesseduffield/lazydocker@latest
 # lazydocker
+
+# - zsh
+sudo apt install zsh -y
+# - zsh
 
 echo 'export EDITOR=nvim' >> ~/.bashrc
 
@@ -140,6 +147,8 @@ LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
 
 LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
 LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
+
+LinkOrRemove $(pwd)/.zshrc ~/.zshrc
 
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
