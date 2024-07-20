@@ -98,7 +98,7 @@ window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
   # the WM as admin.
   - command: "ignore"
-    match_process_name: "/Taskmgr|ScreenClippingHost|UCodeIDE|explorer/"
+    match_process_name: "/Taskmgr|ScreenClippingHost|msrdc|explorer/"
 
   - command: "move to workspace 1"
 
@@ -120,9 +120,22 @@ window_rules:
   - command: "move to workspace 5"
     match_process_name: "godot"
 
+  - command: "move to workspace 5"
+    match_process_name: "devenv"
+  
   - command: "move to workspace 6"
+    match_process_name: "godot"
     match_title: ".*\\(DEBUG\\)$"
   
+  - command: "move to workspace 6"
+    match_process_name: "msrdc"
+  
+  - command: "move to workspace 6"
+    match_process_name: "/UCodeIDE/"
+
+  - command: "move to workspace 7"
+    match_process_name: "/VsDebugConsole/"
+
   # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
   - command: "set floating"
     match_class_name: "#32770"
