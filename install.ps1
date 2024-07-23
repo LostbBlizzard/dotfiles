@@ -31,6 +31,9 @@ RemoveFileIfExst $env:APPDATA\Code\User\keybindings.json
 cmd /c mklink $env:APPDATA\Code\User\settings.json $dir\config\Code\User\settings.json 
 cmd /c mklink $env:APPDATA\Code\User\keybindings.json $dir\config\Code\User\keybindings.json 
 
+RemoveFileIfExst $env:USERPROFILE\.kanata\config.kdb
+RemoveFileIfExst $env:USERPROFILE\.glaze-wm\config.yaml
+
 cmd /c mklink $env:USERPROFILE\.kanata\config.kdb $dir\config\kanata\config.kdb
 
 cmd /c mklink $env:USERPROFILE\.glaze-wm\config.yaml $dir\windows\.glaze-wm\config.yaml
