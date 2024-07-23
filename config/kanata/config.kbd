@@ -2,11 +2,12 @@
 
 
 (defalias 
-  escctrl (tap-hold 200 200 esc (layer-while-held arrows))
+  escarrows (tap-hold 200 200 esc (layer-while-held arrows))
+  ctrllock (tap-dance 200 (lctrl caps))
 )
 
-(defsrc k h j l caps)
+(defsrc k h j l caps q)
 
-(deflayer base    k    h    j    l     @escctrl)
-(deflayer arrows  up   left down right @escctrl)
+(deflayer base    k    h    j    l     @escarrows q)
+(deflayer arrows  up   left down right @escarrows  @ctrllock)
 
