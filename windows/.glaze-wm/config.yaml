@@ -136,6 +136,9 @@ window_rules:
   - command: "move to workspace 7"
     match_process_name: "/VsDebugConsole/"
 
+  - command: "move to workspace 9"
+    match_process_name: "/kanata/"
+
   # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
   - command: "set floating"
     match_class_name: "#32770"

@@ -10,13 +10,13 @@ function RemoveFileIfExst($filePath) {
 }
 # apps
 # GlazeWM
-winget install GlazeWM
+##winget install GlazeWM
 # GlazeWM
 
 # lazydocker
-go install github.com/jesseduffield/lazydocker@latest
+##go install github.com/jesseduffield/lazydocker@latest
 # lazydocker
- app
+# apps
 
 # Vim Settings
 RemoveFileIfExst $env:USERPROFILE\.vimrc
@@ -31,10 +31,10 @@ RemoveFileIfExst $env:APPDATA\Code\User\keybindings.json
 cmd /c mklink $env:APPDATA\Code\User\settings.json $dir\config\Code\User\settings.json 
 cmd /c mklink $env:APPDATA\Code\User\keybindings.json $dir\config\Code\User\keybindings.json 
 
-RemoveFileIfExst $env:USERPROFILE\.kanata\config.kdb
+RemoveFileIfExst $env:USERPROFILE\.kanata\config.kbd 
 RemoveFileIfExst $env:USERPROFILE\.glaze-wm\config.yaml
 
-cmd /c mklink $env:USERPROFILE\.kanata\config.kdb $dir\config\kanata\config.kdb
+cmd /c mklink $env:USERPROFILE\.kanata\config.kbd $dir\config\kanata\config.kbd
 
 cmd /c mklink $env:USERPROFILE\.glaze-wm\config.yaml $dir\windows\.glaze-wm\config.yaml
 pause

@@ -145,7 +145,7 @@ LinkOrRemove $(pwd)/.vimrc ~/.vimrc
 
 LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
 
-LinkOrRemove $(pwd)/config/kanata/config.kdb ~/.config/kanata/config.kdb
+LinkOrRemove $(pwd)/config/kanata/config.kbd ~/.config/kanata/config.kbd
 
 LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
 LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
