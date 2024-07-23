@@ -4,10 +4,12 @@
 (defalias 
   escarrows (tap-hold 200 200 esc (layer-while-held arrows))
   ctrllock (tap-dance 200 (lctrl caps))
+  ctrlmod (tap-hold 200 200 s (layer-while-held ctrlmod))
 )
 
-(defsrc k h j l caps q)
+(defsrc k h j l caps q s)
 
-(deflayer base    k    h    j    l     @escarrows q)
-(deflayer arrows  up   left down right @escarrows  @ctrllock)
+(deflayer base    k    h    j    l     @escarrows q          s)
+(deflayer arrows  up   left down right @escarrows  @ctrllock @ctrlmod)
+(deflayer ctrlmod C-k  C-h  C-j  C-l   @escarrows  @ctrllock  @ctrlmod)
 
