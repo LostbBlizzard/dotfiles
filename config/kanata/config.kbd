@@ -30,7 +30,8 @@
   x
   y
   z
-  enter
+  .
+  spc
 )
 
 (deflayer base    k    h    j    l  @escarrows
@@ -40,6 +41,7 @@
   _
   _
   @ctrlarrows 
+  _
   _
   _
   _
@@ -83,5 +85,6 @@
   C-y
   C-z
   caps
+  C-spc
 )
 
