@@ -1,15 +1,87 @@
-;; Map caps lock to ese and lctrl+arrows
-
+;; Map caps lock to ese and  hold for lctrl+arrows
+;; Hold f for ctrl+arrows
+;; caps lock enter for caplock 
 
 (defalias 
   escarrows (tap-hold 200 200 esc (layer-while-held arrows))
-  ctrllock (tap-dance 200 (lctrl caps))
-  ctrlmod (tap-hold 200 200 s (layer-while-held ctrlmod))
+  ctrlarrows (tap-hold 200 200 f lctrl)
 )
 
-(defsrc k h j l caps q s)
+(defsrc k h j l caps
+  a
+  b
+  c
+  d
+  e
+  f
+  g
+  i
+  m
+  n
+  o
+  p
+  q
+  r
+  s
+  t
+  u
+  v
+  w
+  x
+  y
+  z
+  enter
+)
 
-(deflayer base    k    h    j    l     @escarrows q          s)
-(deflayer arrows  up   left down right @escarrows  @ctrllock @ctrlmod)
-(deflayer ctrlmod C-k  C-h  C-j  C-l   @escarrows  @ctrllock  @ctrlmod)
+(deflayer base    k    h    j    l  @escarrows
+  _
+  _
+  _
+  _
+  _
+  @ctrlarrows 
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+  _
+)
+
+(deflayer arrows  up   left down right @escarrows  
+  C-a
+  C-b
+  C-c
+  C-d
+  C-e
+  C-f
+  C-g
+  C-i
+  C-m
+  C-n
+  C-o
+  C-p
+  C-q
+  C-r
+  C-s
+  C-t
+  C-u
+  C-v
+  C-w
+  C-x
+  C-y
+  C-z
+  caps
+)
 
