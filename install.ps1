@@ -20,6 +20,9 @@ function RemoveFileIfExst($filePath) {
 
 # Vim Settings
 RemoveFileIfExst $env:USERPROFILE\.vimrc
+RemoveFileIfExst $env:USERPROFILE\.vifm\vifmrc
+RemoveFileIfExst $env:USERPROFILE\AppData\Local\nvim
+
 cmd /c mklink $env:USERPROFILE\.vimrc $dir\.vimrc
 cmd /c mklink $env:USERPROFILE\.vifm\vifmrc $dir\config\vifm\vifmrc
 cmd /c mklink /D $env:USERPROFILE\AppData\Local\nvim $dir\config\nvim
@@ -37,4 +40,8 @@ RemoveFileIfExst $env:USERPROFILE\.glaze-wm\config.yaml
 cmd /c mklink $env:USERPROFILE\.kanata\config.kbd $dir\config\kanata\config.kbd
 
 cmd /c mklink $env:USERPROFILE\.glaze-wm\config.yaml $dir\windows\.glaze-wm\config.yaml
+
+RemoveFileIfExst $env:USERPROFILE\.vsvimrc
+cmd /c mklink $env:USERPROFILE\.vsvimrc $dir\windows\VisualStudio\.vsvimrc
+
 pause
