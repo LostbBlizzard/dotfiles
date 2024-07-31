@@ -8,7 +8,7 @@ nnoremap <leader>A :vsc File.CloseAllButThis<cr>
 nnoremap <leader>pv :vsc view.SolutionExplorer<cr>
 nnoremap <leader>sl :vsc Edit.GoToFile<cr>
 nnoremap <leader>sd :vsc View.ErrorList<cr>
-nnoremap <leader>ws :vsc Edit.Edit.GoToSymbol<cr>
+nnoremap <leader>ws :vsc Edit.GoToSymbol<cr>
 
 nnoremap gr :vsc Edit.FindAllReferences<cr>
 
@@ -16,7 +16,7 @@ nnoremap <leader>ca :vsc Edit.CodeActions<cr>
 
 nnoremap <leader>rn :vsc Edit.Rename<cr>
 
-nnoremap <leader>g :vsc view.Gitwindow<cr>
+nnoremap <leader>g :vsc view.Terminal<cr>
 
 nnoremap <leader>dq :vsc Build.Cancel<cr>
 
@@ -26,7 +26,7 @@ nnoremap <leader>j :vsc Window.PreviousTab<cr>
 nnoremap <leader>k :vsc Window.NextTab<cr>
 
 nnoremap <leader>dl :vsc Debug.Start<cr>
-nnoremap <leader>dx :vsc Debug.StopDebuging<cr>
+nnoremap <leader>dx :vsc Debug.StopDebugging<cr>
 
 nnoremap <leader>dj :vsc Debug.ToggleBreakpoint<cr>
 nnoremap <leader>du :vsc Debug.EditBreakpoint<cr>
@@ -34,3 +34,8 @@ nnoremap <leader>di :vsc Debug.StepOver<cr>
 nnoremap <leader>do :vsc Debug.StepInto<cr>
 nnoremap <leader>dh :vsc Debug.StepOut<cr>
 nnoremap <leader>dc :vsc Debug.RunToCursor<cr>
+nnoremap <leader>dk :vsc Debug.QuickWatch<cr>
+
+nnoremap <leader>ds :vsc Debug.CallStack<cr>
+nnoremap <leader>db :vsc Debug.Breakpoints<cr>
+nnoremap <leader>da :vsc Debug.Autos<cr>
