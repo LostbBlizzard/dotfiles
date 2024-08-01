@@ -115,6 +115,9 @@ return {
     vim.keymap.set('n', '<leader>dx', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
     vim.keymap.set('n', '<leader>dp', dap.pause, { desc = 'Debug: Pause' })
 
+    vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = 'Debug: Run to cursor' })
+    vim.keymap.set('n', '<leader>dy', dap.goto_, { desc = 'Debug: Set Next Statement' })
+
     vim.keymap.set('n', '<leader>do', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<leader>di', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<leader>dh', dap.step_out, { desc = 'Debug: Step Out' })
