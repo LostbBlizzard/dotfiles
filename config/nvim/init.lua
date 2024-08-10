@@ -205,7 +205,7 @@ require('lazy').setup(
           },
           skip_confirm_for_simple_edits = true,
         })
-        end
+      end
     },
     -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -355,6 +355,7 @@ require('lazy').setup(
         -- Enable Telescope extensions if they are installed
         pcall(require('telescope').load_extension, 'fzf')
         pcall(require('telescope').load_extension, 'ui-select')
+        pcall(require('telescope').load_extension, 'git-worktree')
 
         -- See `:help telescope.builtin`
         local builtin = require 'telescope.builtin'
