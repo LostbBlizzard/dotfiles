@@ -6,6 +6,25 @@ vim.api.nvim_set_keymap('n', 'L', 'gt', { noremap = true })
 
 vim.api.nvim_set_keymap('n', "<C-d>", "<C-d>zz", { noremap = true })
 vim.api.nvim_set_keymap('n', "<C-u>", "<C-u>zz", { noremap = true })
+
+vim.api.nvim_set_keymap('v', "J", ":m '>+1<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap('v', "K", ":m '<-2<CR>gv=gv", { noremap = true })
+
+vim.api.nvim_set_keymap('n', "n", "nzzzv", { noremap = true })
+vim.api.nvim_set_keymap('n', "N", "Nzzzv", { noremap = true })
+
+
+vim.api.nvim_set_keymap('x', "<leader>p", "\"_dP", { noremap = true })
+
+vim.api.nvim_set_keymap('n', "<leader>y", "\"+y", { noremap = true })
+vim.api.nvim_set_keymap('v', "<leader>y", "\"+y", { noremap = true })
+vim.api.nvim_set_keymap('n', "<leader>Y", "\"+Y", { noremap = true })
+
+vim.api.nvim_set_keymap('v', "<leader>d", "\"_d", { noremap = true })
+vim.api.nvim_set_keymap('n', "<leader>d", "\"_d", { noremap = true })
+
+vim.api.nvim_set_keymap('v', "<leader>s", [[":%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>"]], { noremap = true })
+vim.keymap.set("n", "<leader><C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -88,7 +107,7 @@ vim.api.nvim_create_user_command('AutoFormat', function()
 end, {})
 
 
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Netrw key maps
@@ -180,10 +199,13 @@ require('lazy').setup(
             ["g?"] = "actions.show_help",
             ["<S-l>"] = "actions.select",
             ["<S-h>"] = "actions.parent",
-          }
+          },
+          view_options = {
+            show_hidden = true,
+          },
+          skip_confirm_for_simple_edits = true,
         })
-      end
-
+        end
     },
     -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
