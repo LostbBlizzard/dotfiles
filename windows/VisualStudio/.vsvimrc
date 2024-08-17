@@ -7,6 +7,9 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 let mapleader = " "
 
 nnoremap <leader>A :vsc File.CloseAllButThis<cr>
@@ -14,6 +17,7 @@ nnoremap <leader>A :vsc File.CloseAllButThis<cr>
 nnoremap <leader>pv :vsc view.SolutionExplorer<cr>
 nnoremap <leader>sl :vsc Edit.GoToFile<cr>
 nnoremap <leader>sd :vsc View.ErrorList<cr>
+nnoremap <leader>sg :vsc Edit.FindInFiles<cr>
 nnoremap <leader>ws :vsc Edit.GoToSymbol<cr>
 
 nnoremap gr :vsc Edit.FindAllReferences<cr>
@@ -43,7 +47,10 @@ nnoremap <leader>dh :vsc Debug.StepOut<cr>
 nnoremap <leader>dc :vsc Debug.RunToCursor<cr>
 nnoremap <leader>dk :vsc Debug.QuickWatch<cr>
 nnoremap <leader>dy :vsc Debug.SetNextStatement<cr>
+nnoremap <leader>dr :vsc Debug.ReattachtoProcess<cr>
 
 nnoremap <leader>ds :vsc Debug.CallStack<cr>
 nnoremap <leader>db :vsc Debug.Breakpoints<cr>
 nnoremap <leader>da :vsc Debug.Autos<cr>
+
+map Y y$
