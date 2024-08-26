@@ -6,12 +6,14 @@
 " The basic format for each item is shown with an example.
 
 " ------------------------------------------------------------------------------
-
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
 
 only
+
+" Show hidden files
+windo normal zo
 
 map t :touch<Space>
 map m :mkdir<Space>
@@ -126,10 +128,11 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 mark a ~/
 mark b ~/../../
 mark c ~/../../CoolStuff
-mark d ~/../../CoolStuff/CoolCodeingStuff/other/dotfiles
+mark d ~/../../CoolStuff/CoolCodeingStuff/dotfiles
 mark e ~/../../CoolStuff/CoolCodeingStuff
 mark g ~/../../CoolStuff/CoolGameStuff
 mark l ~/Downloads
+mark p ~/../../CoolStuff/Projects
 
 " ------------------------------------------------------------------------------
 
@@ -514,3 +517,4 @@ nnoremap <c-u> <c-w>x
 "     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
 "
 " let $VIFM_SERVER_NAME = v:servername
+

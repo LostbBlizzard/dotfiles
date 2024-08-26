@@ -26,6 +26,7 @@
   "go.inlayHints.compositeLiteralTypes": true,
   "vim.digraphs": {},
   "sqltools.connections": [],
+  "editor.autoClosingBrackets": "never",
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -117,6 +118,16 @@
       "when": "inDebugMode"
     },
     {
+      "before": ["<leader>", "d", "l"],
+      "commands": ["workbench.action.debug.continue"],
+      "when": "inDebugMode"
+    },
+    {
+      "before": ["<leader>", "d", "l"],
+      "commands": ["workbench.action.debug.start"],
+      "when": "!inDebugMode"
+    },
+    {
       "before": ["<leader>", "d", "o"],
       "commands": ["workbench.action.debug.stepInto"],
       "when": "inDebugMode"
@@ -186,5 +197,10 @@
   "git.openRepositoryInParentFolders": "always",
   "[csharp]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
-  }
+  },
+  "workbench.colorTheme": "rose-pine-nvchad-theme",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "extensions.ignoreRecommendations": true,
+  "editor.minimap.enabled": false
 }

@@ -53,4 +53,11 @@ nnoremap <leader>ds :vsc Debug.CallStack<cr>
 nnoremap <leader>db :vsc Debug.Breakpoints<cr>
 nnoremap <leader>da :vsc Debug.Autos<cr>
 
+xnoremap <leader>p "_dP
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+vnoremap <leader>d "_d
+nnoremap <leader>d "_d
+
 map Y y$
