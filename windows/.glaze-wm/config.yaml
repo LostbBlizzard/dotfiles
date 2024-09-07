@@ -296,11 +296,11 @@ keybindings:
   - command: "focus workspace 1"
     binding: "Alt+A"
   - command: "focus workspace 2"
-    binding: "Alt+S"
+    binding: "Alt+F"
   - command: "focus workspace 3"
     binding: "Alt+D"
   - command: "focus workspace 4"
-    binding: "Alt+F"
+    binding: "Alt+L"
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move to workspace 1", "focus workspace 1"]
