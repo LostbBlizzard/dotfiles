@@ -4,9 +4,9 @@ return {
     { '<leader>e',     '<cmd>:lua require("harpoon.mark").add_file()<cr>',        desc = 'Add File to harpoon' },
     { '<leader><C-e>', '<cmd>:lua require("harpoon.ui").toggle_quick_menu()<cr>', desc = 'Harpoon Menu' },
 
-    { '<leader>a',     '<cmd>:lua require("harpoon.ui").nav_file(1)<cr>',         desc = 'Harpoon Nav File 1' },
-    { '<leader>s',     '<cmd>:lua require("harpoon.ui").nav_file(2)<cr>',         desc = 'Harpoon Nav File 2' },
-    { '<leader>d',     '<cmd>:lua require("harpoon.ui").nav_file(3)<cr>',         desc = 'Harpoon Nav File 3' },
-    { '<leader>f',     '<cmd>:lua require("harpoon.ui").nav_file(4)<cr>',         desc = 'Harpoon Nav File 4' },
+    { '<leader><C-a>',     '<cmd>:lua require("harpoon.ui").nav_file(1)<cr>',         desc = 'Harpoon Nav File 1' },
+    { '<leader><C-s>',     '<cmd>:lua require("harpoon.ui").nav_file(2)<cr>',         desc = 'Harpoon Nav File 2' },
+    { '<leader><C-d>',     '<cmd>:lua require("harpoon.ui").nav_file(3)<cr>',         desc = 'Harpoon Nav File 3' },
+    { '<leader><C-f>',     '<cmd>:lua require("harpoon.ui").nav_file(4)<cr>',         desc = 'Harpoon Nav File 4' },
   }
 }
