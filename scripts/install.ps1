@@ -1,5 +1,4 @@
-$scriptpath = $MyInvocation.MyCommand.Path
-$dir = Split-Path $scriptpath
+$dir = Split-Path -Parent $PSScriptRoot
 
 function RemoveFileIfExst($filePath) {
     
