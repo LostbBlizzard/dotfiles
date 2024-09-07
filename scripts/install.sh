@@ -5,7 +5,7 @@ InstallDevTools()
     mydir=$(pwd) 
 
     sudo apt update
-    sudo apt install curl tar git vim -y
+    sudo apt install curl tar git vim stow -y
 
 #install devtools
 
@@ -24,7 +24,7 @@ sudo apt-get install g++ -y
 # -C/C++
 
 # -go
-wget https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
+curl -l https://go.dev/dl/go1.22.4.linux-amd64.tar.gz -O
 sudo tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
 rm go1.22.4.linux-amd64.tar.gz
 echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.bashrc
@@ -43,7 +43,7 @@ rm lazygit.tar.gz
 #  -lazygit
 
 # -tmux
-apt install tmux -y
+sudo apt install tmux -y
 # -tmux
 
 # -fzf
