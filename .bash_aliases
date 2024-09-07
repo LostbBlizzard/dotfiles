@@ -1,5 +1,5 @@
 alias c="clear"
-alias ts="tmux-sessionizer"
+alias ts="~/dotfiles/scripts/tmux-sessionizer"
 
 alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"

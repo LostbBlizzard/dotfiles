@@ -2,9 +2,9 @@
 
 InstallDevTools()
 {
-mydir=$(pwd) 
+    mydir=$(pwd) 
 
-sudo apt update
+    sudo apt update
 
 #install devtools
 
@@ -121,7 +121,7 @@ echo 'fi' >> ~/.bashrc
 LinkOrRemove()
 {
     if test -f $2; then
-      rm $2
+        rm $2
     fi
 
     ln -s $1 $2
@@ -129,35 +129,14 @@ LinkOrRemove()
 
 InstallDevSettings()
 {
-# set sym-links
-mkdir ~/.config
-mkdir ~/.config/vifm
-mkdir ~/.config/Code
-mkdir ~/.config/Code/User
+    stow .
 
-LinkOrRemove $(pwd)/.bash_aliases  ~/.bash_aliases 
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
-LinkOrRemove $(pwd)/.tmux.conf  ~/.tmux.conf 
+    chmod +X $(pwd)/scripts/git_env_password.sh
+    chmod +X $(pwd)/scripts/tmux-sessionizer
 
-LinkOrRemove $(pwd)/config/vifm/vifmrc ~/.config/vifm/vifmrc
-
-LinkOrRemove $(pwd)/.vimrc ~/.vimrc
-
-LinkOrRemove $(pwd)/config/nvim ~/.config/nvim
-
-LinkOrRemove $(pwd)/config/kanata/config.kbd ~/.config/kanata/config.kbd
-
-LinkOrRemove $(pwd)/Code/User/keybindings.json  ~/.config/Code/User/keybindings.json
-LinkOrRemove $(pwd)/Code/User/setting.json ~/.config/Code/User/setting.json
-
-LinkOrRemove $(pwd)/.zshrc ~/.zshrc
-
-~/.tmux/plugins/tpm/scripts/install_plugins.sh
-
-chmod +X $(pwd)/git_env_password.sh
-. ~/.bashrc
-
-echo "Remember to run: git config credential.https://github.com.username [GIT_USER]"
+    . ~/.bashrc
 }
 
 CYAN_B='\033[1;96m'
@@ -180,10 +159,10 @@ echo "Do you wish to Setup this System?(y/n/tool/config)"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then 
- InstallDevTools
- InstallDevSettings   
+    InstallDevTools
+    InstallDevSettings   
 elif [ "$answer" != "${answer#[config]}" ] ;then 
- InstallDevSettings   
+    InstallDevSettings   
 else
     exit
 fi
