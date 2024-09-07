@@ -5,6 +5,7 @@ InstallDevTools()
     mydir=$(pwd) 
 
     sudo apt update
+    sudo apt install curl tar git vim -y
 
 #install devtools
 
