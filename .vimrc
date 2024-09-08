@@ -21,3 +21,8 @@ vnoremap <leader>d "_d
 nnoremap <leader>d "_d
 
 map Y y$
+
+nnoremap y_ v_y
+nnoremap d_ v_d
+nnoremap c_ v_c
+

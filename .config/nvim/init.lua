@@ -1,6 +1,11 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.api.nvim_set_keymap('n', "y_", "v_y", { noremap = true })
+vim.api.nvim_set_keymap('n', "d_", "v_d", { noremap = true })
+vim.api.nvim_set_keymap('n', "c_", "v_c", { noremap = true })
+
+
 vim.api.nvim_set_keymap('n', 'H', 'gT', { noremap = true })
 vim.api.nvim_set_keymap('n', 'L', 'gt', { noremap = true })
 
@@ -13,6 +18,7 @@ vim.api.nvim_set_keymap('v', "K", ":m '<-2<CR>gv=gv", { noremap = true })
 vim.api.nvim_set_keymap('n', "n", "nzzzv", { noremap = true })
 vim.api.nvim_set_keymap('n', "N", "Nzzzv", { noremap = true })
 
+vim.api.nvim_set_keymap('n', "<C-f>", "nop", { noremap = true })
 
 vim.api.nvim_set_keymap('x', "<leader>p", "\"_dP", { noremap = true })
 
