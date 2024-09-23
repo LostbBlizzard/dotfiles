@@ -6,15 +6,38 @@
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
-ShouldAttach = false
-vim.api.nvim_create_user_command('ShouldAttach', function()
-  ShouldAttach = not ShouldAttach
+local function SetGodotMode(Isgodotproject, Print)
+  if Isgodotproject then
+    local dap = require 'dap'
 
-  if ShouldAttach then
-    print 'ShouldAttach is On'
+    local config = {
+      {
+        type = 'godot',
+        name = 'Run Scene',
+        request = 'launch',
+        stopAtEntry = false,
+        cwd = '${workspaceFolder}',
+      },
+    }
+
+    dap.configurations.gdscript = config
+    dap.configurations.cs = config
+    dap.configurations.lua = config
+
+    if Print then
+      print 'Isgodotproject is On'
+    end
   else
-    print 'ShouldAttach is Off'
+    if Print then
+      print 'Isgodotproject is Off'
+    end
   end
+end
+
+local Isgodotproject = false
+vim.api.nvim_create_user_command('GodotProject', function()
+  Isgodotproject = not Isgodotproject
+  SetGodotMode(Isgodotproject, true)
 end, {})
 
 return {
@@ -66,52 +89,102 @@ return {
     vim.keymap.set('n', '<leader>dk', function()
       require('dapui').eval(nil, { enter = true });
     end)
+
+    dap.adapters.godot = {
+      type = "server",
+      host = '127.0.0.1',
+      port = 6006,
+    }
+
+    --TODO check if inside of godot project
+    SetGodotMode(true, false)
+
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<leader>dl', dap.continue, { desc = 'Debug: Start/Continue' })
-    --[[
-    vim.keymap.set('n', '<leader>dl', function()
-      if ShouldAttach then
-        vim.ui.input({ prompt = 'Attach To Process ID: ' },
-          function(input)
-            if input == "" then
-              print("Not Starting Because there was no Process ID")
-              return
-            end
-
-            isword = true
-
-            if isword then
-              local output = vim.fn.system('ps ax | grep ' .. input)
-              vim.ui.input({ prompt = output .. ' Process: ' },
-                function(input)
-                  dap.adapters.cppdbg = {
-                    type = 'executable',
-                    command = 'codelldb', -- Adjust as needed
-                    name = "cppdbg"
-                  }
-
-                  local config = {
-                    name = "Attach to PID",
-                    type = "cppdbg",
-                    request = "attach",
-                    pid = input,
-                    cwd = "${workspaceFolder}",
-                    stopAtEntry = true,
-                  }
-
-                  dap.run(config, {})
-                end)
-            else
-              dap.attach('cpp', { pid = input })
-            end
-          end);
-      else
-        dap.continue();
-      end
+    --vim.keymap.set('n', '<leader>dl', dap.continue, { desc = 'Debug: Start/Continue' })
+    local function file_exists(file)
+      local f = io.open(file, "rb")
+      if f then f:close() end
+      return f ~= nil
     end
-    , { desc = 'Debug: Start/Continue' })
-    --]]
+    local function string_starts(String, Start)
+      return string.sub(String, 1, string.len(Start)) == Start
+    end
+    local function revlovepath(Path)
+      if string_starts(Path, "~/") then
+        Path = Path:sub(3)
+        Path = os.getenv("HOME") .. "/" .. Path
+      end
+      return Path
+    end
 
+    vim.keymap.set('n', '<leader>dl', function()
+      --- Some like
+      --- ~/projectdir
+      --- echo sometingcool
+      --- exit 0
+
+      local prestartfilepath = os.getenv("HOME") .. "/.nvim.prestart"
+
+      if file_exists(prestartfilepath) then
+        local commandworked = true
+
+        local currentworkingdir = vim.fn.getcwd()
+        local isreadingcommands = false
+        local runonexit = false
+
+        local commandstorun = ""
+        for line in io.lines(prestartfilepath) do
+          if isreadingcommands == false then
+            if revlovepath(line) == currentworkingdir then
+              runonexit = true
+            end
+
+            isreadingcommands = true
+          else
+            if string_starts(line, "exit") then
+              isreadingcommands = false
+
+              if runonexit then
+                local commandtorun = commandstorun .. ":"
+
+                local job = vim.fn.jobstart(commandtorun, {
+                  on_stdout = function(_, data, _)
+                    if data then
+                      for _, line in ipairs(data) do
+                        print(line) -- Print output to command line
+                      end
+                    end
+                  end,
+                  on_stderr = function(_, data, _)
+                    if data then
+                      for _, line in ipairs(data) do
+                        print("Error: " .. line) -- Print errors to command line
+                      end
+                    end
+                  end,
+                  on_exit = function(_, code)
+                    print("Job finished with exit code: " .. code)
+                    if code == 0 then
+                      dap.continue()
+                    end
+                  end,
+                })
+
+                break;
+              end
+            else
+              if runonexit then
+                commandstorun = line .. " && "
+              end
+            end
+
+            isreadingcommands = true
+          end
+        end
+      else
+        --dap.continue()
+      end
+    end, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<leader>dx', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
     vim.keymap.set('n', '<leader>dp', dap.pause, { desc = 'Debug: Pause' })
 

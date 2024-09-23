@@ -101,16 +101,6 @@ vim.opt.scrolloff = 10
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 
-local allowautoformat = true
-vim.api.nvim_create_user_command('AutoFormat', function()
-  allowautoformat = not allowautoformat
-
-  if allowautoformat then
-    print 'AutoFormat is On'
-  else
-    print 'AutoFormat is Off'
-  end
-end, {})
 
 
 vim.opt.hlsearch = false
@@ -616,6 +606,20 @@ require('lazy').setup(
           },
         }
 
+        local function file_exists(file)
+          local f = io.open(file, "rb")
+          if f then f:close() end
+          return f ~= nil
+        end
+
+        --the ones i dont want in my init.lua
+        local masoninstallpath = os.getenv("HOME") .. "/.masoninstall"
+        if file_exists(masoninstallpath) then
+          for line in io.lines(masoninstallpath) do
+            servers[line] = {}
+          end
+        end
+
         -- Ensure the servers and tools above are installed
         --  To check the current status of installed tools and/or manually install
         --  other tools, you can run
@@ -668,7 +672,25 @@ require('lazy').setup(
           -- languages here or re-enable it for the disabled ones.
           local disable_filetypes = { c = true, cpp = true }
 
-          if allowautoformat then
+          local filenametoignore = { "premake5.lua" }
+          local filepath = vim.api.nvim_buf_get_name(bufnr)
+
+          local function get_file_name(file)
+            return file:match("^.+/(.+)$")
+          end
+
+          local filename = get_file_name(filepath)
+          local inloop = false;
+
+          for _, item in ipairs(filenametoignore) do
+            if item == filename then
+              inloop = true;
+              break;
+            end
+          end
+
+
+          if not inloop then
             return {
               timeout_ms = 500,
               lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],

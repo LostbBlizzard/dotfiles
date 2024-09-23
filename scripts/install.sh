@@ -24,11 +24,17 @@ sudo apt-get install g++ -y
 # -C/C++
 
 # -go
-curl -l https://go.dev/dl/go1.22.4.linux-amd64.tar.gz -O
+curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz -O
 sudo tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
 rm go1.22.4.linux-amd64.tar.gz
 echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.bashrc
 # -go
+
+# install node
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+source ~/.bashrc
+nvm install node
+# install node
 
 # -terminal tools
 
@@ -115,6 +121,15 @@ echo 'POWERLINE_BASH_CONTINUATION=1' >> ~/.bashrc
 echo 'POWERLINE_BASH_SELECT=1' >> ~/.bashrc
 echo 'source /usr/share/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
+
+
+sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
+
+git clone https://github.com/Raymo111/i3lock-color ~/prebuilt/
+cd ~/prebuilt/i3lock-color/
+./install-i3lock-color.sh
+
+cd $mydir
 
 ~/.bashrc
 }
