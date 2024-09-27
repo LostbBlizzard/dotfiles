@@ -23,6 +23,7 @@ local function SetGodotMode(Isgodotproject, Print)
     dap.configurations.gdscript = config
     dap.configurations.cs = config
     dap.configurations.lua = config
+    dap.configurations.cpp = config
 
     if Print then
       print 'Isgodotproject is On'
@@ -127,6 +128,7 @@ return {
 
       if file_exists(prestartfilepath) then
         local commandworked = true
+        local found = false
 
         local currentworkingdir = vim.fn.getcwd()
         local isreadingcommands = false
@@ -147,6 +149,7 @@ return {
               if runonexit then
                 local commandtorun = commandstorun .. ":"
 
+                found = true
                 local job = vim.fn.jobstart(commandtorun, {
                   on_stdout = function(_, data, _)
                     if data then
@@ -180,9 +183,12 @@ return {
 
             isreadingcommands = true
           end
+          if found == false then
+            dap.continue()
+          end
         end
       else
-        --dap.continue()
+        dap.continue()
       end
     end, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<leader>dx', dap.disconnect, { desc = 'Debug: Close/Stop Debugging' })
