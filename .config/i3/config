@@ -62,12 +62,12 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Shift+b exec --no-startup-id i3-msg workspace 1; exec google-chrome
+bindsym $mod+Shift+b exec --no-startup-id i3-msg workspace 1; exec chromium
 bindsym $mod+Return  exec --no-startup-id i3-msg workspace 2; exec i3-sensible-terminal
 bindsym $mod+Shift+g exec --no-startup-id i3-msg workspace 3; exec ~/prebuilt/godot/godot
 bindsym $mod+Shift+l exec --no-startup-id i3-msg workspace 4; exec ~/prebuilt/LibreSprite
 
-for_window [class="google-chrome"] move to workspace 1
+for_window [class="chromium"] move to workspace 1
 for_window [class="Gnome-terminal"] move to workspace 2
 for_window [class="Godot"] move to workspace 3
 for_window [class="libresprite"] move to workspace 4
