@@ -1,0 +1,10 @@
+[/]
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']
+
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+background-color='rgb(31,31,40)'
+bold-is-bright=true
+foreground-color='rgb(211,215,207)'
+scrollbar-policy='never'
+use-system-font=false
+use-theme-colors=false
