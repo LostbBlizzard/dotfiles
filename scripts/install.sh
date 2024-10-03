@@ -30,12 +30,6 @@ rm go1.22.4.linux-amd64.tar.gz
 echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.bashrc
 # -go
 
-# install node
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-source ~/.bashrc
-nvm install node
-# install node
-
 # -terminal tools
 
 #  -lazygit
@@ -104,7 +98,10 @@ sudo apt-get install pass -y
 # installs nvm (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 # download and install Node.js (you may need to restart the terminal)
-bash nvm install 20
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm install 20
+
 # node
 
 # lazydocker
@@ -141,29 +138,38 @@ echo 'POWERLINE_BASH_SELECT=1' >> ~/.bashrc
 echo 'source /usr/share/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
 
-echo 'if [ ! -f ~/.gnupg/gpg-agent.conf ]; then' .. >> ~/.bashrc
+echo 'if [ ! -f ~/.gnupg/gpg-agent.conf ]; then' >> ~/.bashrc
 echo '  mkdir -p ~/.gnupg' >> ~/.bashrc
 echo '  echo "pinentry-program /usr/bin/pinentry-tty" > ~/.gnupg/gpg-agent.conf' >> ~/.bashrc
-echo '  echo "made gpg-agent.conf' >> ~/.bashrc
+echo '  echo "made gpg-agent.conf" ' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
 # bashrc
+
+# i3
+sudo apt install i3 -y
+# i3
 
 # i3lock
 sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev -y
 
 mkdir ~/prebuilt
 git clone https://github.com/Raymo111/i3lock-color ~/prebuilt/i3lock
-cd ~/prebuilt/i3lock-color/
+currentdir=$(pwd)
+cd ~/prebuilt/i3lock
 ./install-i3lock-color.sh
+
+cd $currentdir
+
 # i3lock
 
-mkdir -p ~/prebuilt/bin
 
 # premake
-mkdir -p ~/prebuilt/bin/premake5
-curl -L https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/premake-5.0.0-beta2-linux.tar.gz -o ~/prebuilt/premake.zip
-tar -zxvf ~/prebuilt/premake.zip --directory ~/prebuilt/premake5
-rm ~/prebuilt/premake.zip 
+mkdir -p ~/prebuilt/bin
+mkdir -p ~/prebuilt/premake5
+
+curl -L https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/premake-5.0.0-beta2-linux.tar.gz -o ~/prebuilt/premake.tar.gz
+tar -xvzf ~/prebuilt/premake.tar.gz --directory ~/prebuilt/premake5
+rm ~/prebuilt/premake.tar.gz 
 
 ln -s ~/prebuilt/premake5/premake5 ~/prebuilt/bin/premake5
 
@@ -176,7 +182,7 @@ echo "require \"export-compile-commands\"" >> ~/.premake/premake5-system.lua
 # premake
 
 # mdbook 
-mkdir mdbook
+mkdir ~/prebuilt/mdbook
 curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz -o ~/prebuilt/mdbook.tar.gz
 tar -zxvf ~/prebuilt/mdbook.tar.gz --directory ~/prebuilt/mdbook
 rm ~/prebuilt/mdbook.tar.gz
@@ -213,18 +219,37 @@ InstallDevSettings()
 
 SetupKanata()
 {
-    cargo install kanata
+    mkdir -p ~/prebuilt/kanata
+    mkdir -p ~/prebuilt/bin
+
+    curl -L https://github.com/jtroo/kanata/releases/download/v1.6.1/kanata -o ~/prebuilt/kanata/kanata
+    chmod +x ~/prebuilt/kanata/kanata
+    ln -s ~/prebuilt/kanata/kanata ~/prebuilt/bin/kanata
+    
     sudo groupadd input
     sudo groupadd uinput
     sudo usermod -aG input $(whoami)
     sudo usermod -aG uinput $(whoami)
-
-    sudo mkdir -p /etc/udev/rules.d/
-
-    sudo touch /etc/udev/rules.d/99-uinput.rules 
-    echo -n "" > /etc/udev/rules.d/99-uinput.rules 
     
-    echo "KERNEL==\"uinput\", MODE=\"0660\", GROUP=\"uinput\", OPTIONS+=\"static_node=uinput\"" >> /etc/udev/rules.d/99-uinput.rules
+    sudo mkdir -p /etc/udev/rules.d/
+    sudo touch /etc/udev/rules.d/99-uinput.rules 
+    sudo sh -c "echo -n \"\" > /etc/udev/rules.d/99-uinput.rules"
+    
+    rulestext="KERNEL==\\\"uinput\\\", MODE=\\\"0660\\\", GROUP=\\\"uinput\\\", OPTIONS+=\\\"static_node=uinput\\\""
+    sudo sh -c "echo \"$rulestext\" >> /etc/udev/rules.d/99-uinput.rules"
+    
+    mkdir -p ~/.config/systemd/user/
+
+    echo -n "" > ~/.config/systemd/user/kanata.service 
+    echo "[Unit]" >> ~/.config/systemd/user/kanata.service 
+    echo "Description=Kanata Service" >> ~/.config/systemd/user/kanata.service 
+    echo "[Service]" >> ~/.config/systemd/user/kanata.service 
+    echo "ExecStartPre=/sbin/modprobe uinput " >> ~/.config/systemd/user/kanata.service 
+    echo "ExecStart=/home/$(whoami)/prebuilt/kanata/kanata -c /home/$(whoami)/.config/kanata/config.kbd" >> ~/.config/systemd/user/kanata.service 
+    echo "Restart=no" >> ~/.config/systemd/user/kanata.service 
+    echo "[Install]" >> ~/.config/systemd/user/kanata.service 
+    echo "WantedBy=multi-user.target" >> ~/.config/systemd/user/kanata.service 
+
     systemctl --user start kanata.service
     systemctl --user enable kanata.service
 }
@@ -252,21 +277,21 @@ InstallGUI()
     # LibreSprite
     
     # chromium
-    curl -L https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots -o ~/prebuilt/chromium.zip
-    unzip ~/prebuilt/chromium.zip -d ~/prebuilt/chromium
-    rm ~/prebuilt/chromium.zip
-    ln -s ~/prebuilt/chromium/chrome-linux/chrome ~/prebuilt/bin/chromium 
+    # curl -L https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots -o ~/prebuilt/chromium.zip
+    # unzip ~/prebuilt/chromium.zip -d ~/prebuilt/chromium
+    # rm ~/prebuilt/chromium.zip
+    # ln -s ~/prebuilt/chromium/chrome-linux/chrome ~/prebuilt/bin/chromium 
 
     # chromium extensions
-    vimiumid="dbepggeogbaibhgnhhndojpepiihcmeb"
-    showtabnumbersid="pflnpcinjbcfefgbejjfanemlgcfjbna"
-    Chrometabsid="fipfgiejfpcdacpjepkohdlnjonchnal"
-    firefoxthemeid="pinabllndpmfdcknifcfcmdgdngjcfii"
+    # vimiumid="dbepggeogbaibhgnhhndojpepiihcmeb"
+    # showtabnumbersid="pflnpcinjbcfefgbejjfanemlgcfjbna"
+    # Chrometabsid="fipfgiejfpcdacpjepkohdlnjonchnal"
+    # firefoxthemeid="pinabllndpmfdcknifcfcmdgdngjcfii"
 
-    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(vimiumid)"
-    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(showtabnumbersid)"
-    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(Chrometabsid)"
-    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(firefoxthemeid)"
+    # ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$vimiumid"
+    # ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$showtabnumbersid"
+    # ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$Chrometabsid"
+    # ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$firefoxthemeid"
     # chromium extensions
     # chromium
 }
@@ -286,21 +311,25 @@ echo "Setup Dotfiles"
 echo "Install packages"
 echo "Configure system/n"
 
-echo "Do you wish to Setup this System?(y/n/tool/config/kanata,all)"
+echo "Do you wish to Setup this System?(y/n/tool/config/kanata/guiapp/all)"
 
 read answer
+
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then 
     InstallDevTools
     InstallDevSettings   
-elif [ "$answer" != "${answer#[config]}" ] ;then 
+elif [ "$answer" = "config" ] ;then 
     InstallDevSettings   
-elif [ "$answer" != "${answer#[kanata]}" ] ;then 
+elif [ "$answer" = "kanata" ] ;then 
     SetupKanata
-elif [ "$answer" != "${answer#[all]}" ] ;then 
+elif [ "$answer" = "guiapp" ] ;then 
+    InstallGUI   
+elif [ "$answer" = "all" ] ;then 
     InstallDevTools
     InstallDevSettings   
     SetupKanata
+    InstallGUI
 else
     exit
 fi
