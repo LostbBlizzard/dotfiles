@@ -138,12 +138,17 @@ echo 'POWERLINE_BASH_SELECT=1' >> ~/.bashrc
 echo 'source /usr/share/powerline/bindings/bash/powerline.sh' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
 
+
 echo 'if [ ! -f ~/.gnupg/gpg-agent.conf ]; then' >> ~/.bashrc
 echo '  mkdir -p ~/.gnupg' >> ~/.bashrc
 echo '  echo "pinentry-program /usr/bin/pinentry-tty" > ~/.gnupg/gpg-agent.conf' >> ~/.bashrc
 echo '  echo "made gpg-agent.conf" ' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
 # bashrc
+
+# pinentry
+sudo apt install pinentry-tty
+# pinentry
 
 # i3
 sudo apt install i3 -y
