@@ -115,7 +115,18 @@ go install github.com/jesseduffield/lazydocker@latest
 sudo apt install zsh -y
 # - zsh
 
+# dotnet
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+chmod +x ./dotnet-install.sh
+./dotnet-install.sh
+rm ./dotnet-install.sh
+echo 'export PATH="$PATH:$HOME/.dotnet"' >> ~/.bashrc
+# dotnet
+
+
+# bashrc
 echo 'export EDITOR=nvim' >> ~/.bashrc
+echo 'export PATH="$PATH:$HOME/prebuilt/bin"' >> ~/.bashrc
 
 echo 'export PATH="$PATH:$HOME/go/bin"' >> ~/.bashrc
 
@@ -135,12 +146,43 @@ echo '  mkdir -p ~/.gnupg' >> ~/.bashrc
 echo '  echo "pinentry-program /usr/bin/pinentry-tty" > ~/.gnupg/gpg-agent.conf' >> ~/.bashrc
 echo '  echo "made gpg-agent.conf' >> ~/.bashrc
 echo 'fi' >> ~/.bashrc
+# bashrc
 
+# i3lock
 sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev -y
 
-git clone https://github.com/Raymo111/i3lock-color ~/prebuilt/
+mkdir ~/prebuilt
+git clone https://github.com/Raymo111/i3lock-color ~/prebuilt/i3lock
 cd ~/prebuilt/i3lock-color/
 ./install-i3lock-color.sh
+# i3lock
+
+mkdir -p ~/prebuilt/bin
+
+# premake
+mkdir -p ~/prebuilt/bin/premake5
+curl -L https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/premake-5.0.0-beta2-linux.tar.gz -o ~/prebuilt/premake.zip
+tar -zxvf ~/prebuilt/premake.zip --directory ~/prebuilt/premake5
+rm ~/prebuilt/premake.zip 
+
+ln -s ~/prebuilt/premake5/premake5 ~/prebuilt/bin/premake5
+
+# premake plugins
+mkdir ~/.premake
+git clone https://github.com/tarruda/premake-export-compile-commands ~/.premake/export-compile-commands
+echo "require \"export-compile-commands\"" >> ~/.premake/premake5-system.lua 
+# premake plugins
+
+# premake
+
+# mdbook 
+mkdir mdbook
+curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz -o ~/prebuilt/mdbook.tar.gz
+tar -zxvf ~/prebuilt/mdbook.tar.gz --directory ~/prebuilt/mdbook
+rm ~/prebuilt/mdbook.tar.gz
+ln -s ~/prebuilt/mdbook/mdbook ~/prebuilt/bin/mdbook
+# mdbook 
+
 
 cd $mydir
 
@@ -190,8 +232,43 @@ SetupKanata()
 
 InstallGUI()
 {
+    mkdir -p ~/prebuilt/bin
 
+    # godot
+    curl -L https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip -o ~/prebuilt/godot.zip
+    unzip ~/prebuilt/godot.zip -d ~/prebuilt/godot
+    rm ~/prebuilt/godot.zip
 
+    ln -s ~/prebuilt/godot/Godot_v4.3-stable_mono_linux_x86_64/Godot_v4.3-stable_mono_linux.x86_64 ~/prebuilt/bin/godot 
+    # godot
+
+    # LibreSprite
+    curl -L https://github.com/LibreSprite/LibreSprite/releases/download/v1.1/libresprite-development-linux-x86_64.zip -o ~/prebuilt/libresprite.zip
+    unzip ~/prebuilt/libresprite.zip -d ~/prebuilt/libresprite
+    rm ~/prebuilt/libresprite.zip
+    chmod +x ~/prebuilt/libresprite/LibreSprite-x86_64.AppImage
+
+    ln -s ~/prebuilt/libresprite/LibreSprite-x86_64.AppImage ~/prebuilt/bin/libresprite 
+    # LibreSprite
+    
+    # chromium
+    curl -L https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots -o ~/prebuilt/chromium.zip
+    unzip ~/prebuilt/chromium.zip -d ~/prebuilt/chromium
+    rm ~/prebuilt/chromium.zip
+    ln -s ~/prebuilt/chromium/chrome-linux/chrome ~/prebuilt/bin/chromium 
+
+    # chromium extensions
+    vimiumid="dbepggeogbaibhgnhhndojpepiihcmeb"
+    showtabnumbersid="pflnpcinjbcfefgbejjfanemlgcfjbna"
+    Chrometabsid="fipfgiejfpcdacpjepkohdlnjonchnal"
+    firefoxthemeid="pinabllndpmfdcknifcfcmdgdngjcfii"
+
+    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(vimiumid)"
+    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(showtabnumbersid)"
+    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(Chrometabsid)"
+    ~/prebuilt/bin/chromium --new-tab "https://chromewebstore.google.com/detail/$(firefoxthemeid)"
+    # chromium extensions
+    # chromium
 }
 
 CYAN_B='\033[1;96m'
