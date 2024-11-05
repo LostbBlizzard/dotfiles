@@ -97,16 +97,16 @@ return {
       port = 6006,
     }
 
-    --TODO check if inside of godot project
-    SetGodotMode(true, false)
-
-    -- Basic debugging keymaps, feel free to change to your liking!
-    --vim.keymap.set('n', '<leader>dl', dap.continue, { desc = 'Debug: Start/Continue' })
     local function file_exists(file)
       local f = io.open(file, "rb")
       if f then f:close() end
       return f ~= nil
     end
+    --TODO check if inside of godot project
+    SetGodotMode(file_exists("project.godot"), false)
+
+    -- Basic debugging keymaps, feel free to change to your liking!
+    --vim.keymap.set('n', '<leader>dl', dap.continue, { desc = 'Debug: Start/Continue' })
     local function string_starts(String, Start)
       return string.sub(String, 1, string.len(Start)) == Start
     end
