@@ -449,6 +449,9 @@ require('lazy').setup(
             local map = function(keys, func, desc)
               vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
             end
+            local imap = function(keys, func, desc)
+              vim.keymap.set('i', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+            end
 
             -- Jump to the definition of the word under your cursor.
             --  This is where a variable was first declared, or where a function is defined, etc.
@@ -490,6 +493,9 @@ require('lazy').setup(
             -- WARN: This is not Goto Definition, this is Goto Declaration.
             --  For example, in C this would take you to the header.
             map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+            imap('<c-s>', vim.lsp.buf.signature_help, 'Signature Help')
+            map('<c-s>', vim.lsp.buf.signature_help, 'Signature Help')
 
             -- The following two autocommands are used to highlight references of the
             -- word under your cursor when your cursor rests there for a little while.
