@@ -226,6 +226,45 @@ return {
           disconnect = '⏏',
         },
       },
+      mappings = {
+        edit = "e",
+        expand = { "<CR>", "i" },
+        open = "o",
+        remove = "d",
+        repl = "r",
+        toggle = "t"
+      },
+      layouts = { {
+        elements = { {
+          id = "scopes",
+          size = 1 / 3
+        }, {
+          id = "breakpoints",
+          size = 1 / 3
+        }, {
+          id = "stacks",
+          size = 1 / 3
+        },
+          -- {
+          --   id = "watches",
+          --   size = 0.25
+          -- }
+        },
+        position = "left",
+        size = 40
+      }, {
+        elements = {
+          --  {
+          --   id = "repl",
+          --   size = 0.5
+          -- },
+          {
+            id = "console",
+            size = 1
+          } },
+        position = "bottom",
+        size = 10
+      } },
     }
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
