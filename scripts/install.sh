@@ -253,7 +253,7 @@ SetupKanata()
     echo "ExecStart=/home/$(whoami)/prebuilt/kanata/kanata -c /home/$(whoami)/.config/kanata/config.kbd" >> ~/.config/systemd/user/kanata.service 
     echo "Restart=no" >> ~/.config/systemd/user/kanata.service 
     echo "[Install]" >> ~/.config/systemd/user/kanata.service 
-    echo "WantedBy=multi-user.target" >> ~/.config/systemd/user/kanata.service 
+    echo "WantedBy=default.target" >> ~/.config/systemd/user/kanata.service 
 
     systemctl --user start kanata.service
     systemctl --user enable kanata.service
