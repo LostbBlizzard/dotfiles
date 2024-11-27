@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keyboard version="1">
+    <commands>
+        <key command="Undo" shortcut="Ctrl+Z" removed="true"/>
+        <key command="Undo" shortcut="Ctrl+U" removed="true"/>
+        <key command="Undo" shortcut="4"/>
+        <key command="GotoPreviousFrame" context="Normal" shortcut="Left" removed="true"/>
+        <key command="GotoPreviousFrame" context="Normal" shortcut="2"/>
+        <key command="GotoNextFrame" context="Normal" shortcut="Right" removed="true"/>
+        <key command="GotoNextFrame" context="Normal" shortcut="3"/>
+        <key command="SnapToGrid" shortcut="Shift+S" removed="true"/>
+        <key command="Zoom" shortcut="1" removed="true">
+            <param name="percentage" value="100"/>
+        </key>
+        <key command="Zoom" shortcut="4" removed="true">
+            <param name="percentage" value="800"/>
+        </key>
+    </commands>
+    <tools>
+        <key tool="rectangular_marquee" shortcut="M" removed="true"/>
+        <key tool="rectangular_marquee" shortcut="S"/>
+        <key tool="eyedropper" shortcut="I" removed="true"/>
+        <key tool="eyedropper" shortcut="F"/>
+        <key tool="line" shortcut="L" removed="true"/>
+        <key tool="line" shortcut="1"/>
+        <key tool="rectangle" shortcut="U" removed="true"/>
+        <key tool="rectangle" shortcut="Shift+S"/>
+    </tools>
+    <quicktools/>
+    <actions/>
+</keyboard>
