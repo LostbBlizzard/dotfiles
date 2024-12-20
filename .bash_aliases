@@ -5,3 +5,6 @@ alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"
 
 alias premake="premake4"
+
+alias unziptar="tar -xvzf"
+alias ziptar="tar -czvf"
