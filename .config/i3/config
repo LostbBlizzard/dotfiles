@@ -67,6 +67,7 @@ bindsym $mod+Return  exec --no-startup-id i3-msg workspace 2; exec i3-sensible-t
 bindsym $mod+Shift+g exec --no-startup-id i3-msg workspace 3; exec ~/prebuilt/bin/godot
 bindsym $mod+Shift+l exec --no-startup-id i3-msg workspace 4; exec ~/prebuilt/bin/libresprite
 bindsym $mod+Shift+f exec --no-startup-id i3-msg; exec xdg-open .
+bindsym $mod+Shift+o exec --no-startup-id i3-msg; exec ~/prebuilt/bin/obsidian
 
 for_window [class="chromium"] move to workspace 1
 for_window [class="Gnome-terminal"] move to workspace 2
@@ -75,6 +76,7 @@ for_window [class="Godot"] move to workspace 3
 for_window [class="libresprite"] move to workspace 4
 for_window [class="NoNameGameGodot"] move to workspace 4
 for_window [class="UCodeIDE"] move to workspace 4
+for_window [class="obsidian"] move to workspace 9
 
 # kill focused window
 bindsym $mod+Shift+q kill
