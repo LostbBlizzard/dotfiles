@@ -4,6 +4,12 @@
         <key command="Undo" shortcut="Ctrl+Z" removed="true"/>
         <key command="Undo" shortcut="Ctrl+U" removed="true"/>
         <key command="Undo" shortcut="4"/>
+        <key command="Copy" shortcut="Ctrl+Ins" removed="true"/>
+        <key command="Copy" shortcut="Ctrl+C" removed="true"/>
+        <key command="Copy" shortcut="2"/>
+        <key command="Paste" shortcut="Ctrl+V" removed="true"/>
+        <key command="Paste" shortcut="Shift+Ins" removed="true"/>
+        <key command="Paste" shortcut="3"/>
         <key command="GotoPreviousFrame" context="Normal" shortcut="Left" removed="true"/>
         <key command="GotoPreviousFrame" context="Normal" shortcut="2"/>
         <key command="GotoNextFrame" context="Normal" shortcut="Right" removed="true"/>
@@ -11,6 +17,12 @@
         <key command="SnapToGrid" shortcut="Shift+S" removed="true"/>
         <key command="Zoom" shortcut="1" removed="true">
             <param name="percentage" value="100"/>
+        </key>
+        <key command="Zoom" shortcut="2" removed="true">
+            <param name="percentage" value="200"/>
+        </key>
+        <key command="Zoom" shortcut="3" removed="true">
+            <param name="percentage" value="400"/>
         </key>
         <key command="Zoom" shortcut="4" removed="true">
             <param name="percentage" value="800"/>
