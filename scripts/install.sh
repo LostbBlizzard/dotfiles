@@ -24,9 +24,9 @@ sudo apt-get install g++ -y
 # -C/C++
 
 # -go
-curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz -O
-sudo tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
-rm go1.22.4.linux-amd64.tar.gz
+curl -L https://go.dev/dl/go1.24.1.linux-amd64.tar.gz -O
+sudo tar -C /usr/local -xzf go1.24.1.linux-amd64.tar.gz
+rm go1.24.4.linux-amd64.tar.gz
 echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.bashrc
 # -go
 
@@ -46,13 +46,6 @@ rm lazygit.tar.gz
 sudo apt install tmux -y
 # -tmux
 
-# -fzf
-sudo apt install fzf -y
-# -fzf
-
-# -vifm
-sudo apt install vifm -y
-# -vifm
 
 # pbcopy
 sudo apt install xsel -y
@@ -65,7 +58,7 @@ sudo apt-get install ripgrep
 # -applications
 
 # neovim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz 
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 
