@@ -11,7 +11,11 @@
 
 for_window [class="^.*"] border pixel 2
                           # class                 border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused          77dd77 #285577 #ffffff #2e9ef4   #285577
+client.focused          #7E9CD8 #7E9CD8 #DCD7BA #7E9CD8 #7E9CD8
+client.unfocused        #1F1F28 #1F1F28 #727169 #1F1F28 #1F1F28
+client.focused_inactive #1F1F28 #1F1F28 #727169 #1F1F28 #1F1F28
+client.urgent           #C34043 #C34043 #DCD7BA #C34043 #C34043
+client.background       #1F1F28
 
 
 set $mod Mod1
@@ -42,7 +46,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/lock --nofor
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec --no-startup-id feh --bg-scale ~/Downloads/backround.png
+# exec --no-startup-id feh --bg-scale ~/dotfiles/backround/japanese-space-minimalism.jpg
 
 exec --no-startup-id i3-sensible-terminal
 
@@ -219,7 +223,15 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        colors {
+        background #1F1F28
+        statusline #DCD7BA
+        separator  #727169
 
+        focused_workspace  #7E9CD8 #7E9CD8 #1F1F28
+        inactive_workspace #1F1F28 #1F1F28 #727169
+        urgent_workspace   #C34043 #C34043 #DCD7BA
+       }
 }
 
 
