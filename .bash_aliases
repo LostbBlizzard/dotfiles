@@ -8,3 +8,4 @@ alias premake="premake4"
 
 alias unziptar="tar -xvzf"
 alias ziptar="tar -czvf"
+alias qf="find . | rg"
