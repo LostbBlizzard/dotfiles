@@ -1,5 +1,12 @@
 ;; Map caps lock to ese and  hold for lctrl+arrows
 
+;; Map Windows Copilot Key to rctrl
+
+(defcfg
+process-unmapped-keys yes
+concurrent-tap-hold yes
+)
+
 (defalias 
   escarrows (tap-hold 200 200 esc (layer-while-held arrows))
 )
@@ -10,3 +17,6 @@
 
 (deflayer arrows  up   left down right @escarrows)
 
+(defchordsv2
+  (lsft lmet f23) rctl 200 all-released ()
+)
