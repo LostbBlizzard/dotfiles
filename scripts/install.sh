@@ -220,8 +220,12 @@ SetupKanata()
     mkdir -p ~/prebuilt/kanata
     mkdir -p ~/prebuilt/bin
 
-    curl -L https://github.com/jtroo/kanata/releases/download/v1.6.1/kanata -o ~/prebuilt/kanata/kanata
+    curl -L https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip -o ~/prebuilt/kanata/kanata.zip
+    unzip ~/prebuilt/kanata/kanata.zip -d ~/prebuilt/kanata/
+    mv ~/prebuilt/kanata/kanata_linux_x64 ~/prebuilt/kanata/kanata
     chmod +x ~/prebuilt/kanata/kanata
+    rm ~/prebuilt/kanata/kanata_linux_cmd_allowed_x64
+    rm ~/prebuilt/kanata/kanata.zip
     ln -s ~/prebuilt/kanata/kanata ~/prebuilt/bin/kanata
     
     sudo groupadd input
